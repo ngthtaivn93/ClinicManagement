@@ -243,6 +243,7 @@
             this.txtMkNV.Name = "txtMkNV";
             this.txtMkNV.Size = new System.Drawing.Size(267, 20);
             this.txtMkNV.TabIndex = 1;
+            this.txtMkNV.TextChanged += new System.EventHandler(this.txtMkNV_TextChanged);
             // 
             // label9
             // 

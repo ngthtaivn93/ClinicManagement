@@ -17,6 +17,10 @@ namespace prjClient
         private svcRefQLPM.QLPMClient _proxy;
         private svcRefQLPM.ChucNang[] _dsChucNang;
         private svcRefQLPM.TrangThaiNV[] _dsTrangThaiNV;
+        private svcRefQLPM.NhanVien[] _dsNhanVien;
+        private string _currentPasswd;
+        private bool _flag;
+        private bool _passwd_Changed;
 
         private Dictionary<string, DateTime> _dicNgaySinh;
         private DataTable _dtbDSTuyChon;
@@ -30,6 +34,8 @@ namespace prjClient
             _proxy = proxy;
             _dsChucNang = dsChucNang;
             _dsTrangThaiNV = dsTrangThaiNV;
+            _passwd_Changed = false;
+            _flag = false;
             InitializeComponent();
 
             _dicNgaySinh = new Dictionary<string, DateTime>();
@@ -70,11 +76,13 @@ namespace prjClient
         #region Truyen nhan du lieu
         public void Nhan_frmQLNhanVien_dsNhanVien(svcRefQLPM.NhanVien[] dsNhanVien)
         {
+            _dsNhanVien = dsNhanVien;
             _dicNgaySinh.Clear();
             dgvDSNV.Rows.Clear();
             foreach (var item in dsNhanVien)
             {
                 _dicNgaySinh.Add(item.TaiKhoanNV, item.NgaySinhNV);
+                _currentPasswd = item.MkNV;
                 dgvDSNV.Rows.Add(
                     item.TaiKhoanNV,
                     new String('*', item.MkNV.Length),
@@ -227,6 +235,7 @@ namespace prjClient
                     txtTaiKhoanNV.Text = dgvDSNV.SelectedRows[0].Cells[0].Value.ToString();
 
                     txtMkNV.Text = dgvDSNV.SelectedRows[0].Cells[1].Value.ToString();
+                    _flag = true;
 
                     if (dgvDSNV.SelectedRows[0].Cells[2].Value != null)
                         txtHoVaTenDemNV.Text = dgvDSNV.SelectedRows[0].Cells[2].Value.ToString();
@@ -338,6 +347,7 @@ namespace prjClient
             return false;
         }
 
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             // Kiểm tra các textbox có trống hay không (Chỉ những trường not null)
@@ -383,7 +393,6 @@ namespace prjClient
                         // Sua thong tin
                         svcRefQLPM.NhanVien modNhanVien = new svcRefQLPM.NhanVien();
                         modNhanVien.TaiKhoanNV = txtTaiKhoanNV.Text;
-                        modNhanVien.MkNV = txtMkNV.Text;
                         modNhanVien.DiaChiNV = txtDiaChiNV.Text;
                         modNhanVien.GioiTinhNV = cboGioiTinhNV.Text.Trim().Equals("Nam") ? true : false;
                         modNhanVien.HoVaTenDemNV = txtHoVaTenDemNV.Text;
@@ -391,6 +400,13 @@ namespace prjClient
                         modNhanVien.NgaySinhNV = dtpNgaySinhNV.Value;
                         modNhanVien.SDTNV = txtSDTNV.Text;
                         modNhanVien.TenNV = txtTenNV.Text;
+                        if (_passwd_Changed)
+                        {
+                            modNhanVien.MkNV = txtMkNV.Text;
+                            _passwd_Changed = false;
+                        }
+                        else
+                            modNhanVien.MkNV = _currentPasswd;
 
                         string[] dsChucNang_modNhanVien = new string[10];
                         int i = 0;
@@ -462,6 +478,16 @@ namespace prjClient
             dtpNgaySinhNV.Value = new DateTime(1990, 1, 1);
 
         }
+
+        private void txtMkNV_TextChanged(object sender, EventArgs e)
+        {
+            if (_flag)
+            {
+                _passwd_Changed = true;
+                _flag = false;
+            }
+        }
+
 
 
 

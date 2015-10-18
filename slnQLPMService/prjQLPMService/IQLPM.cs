@@ -36,6 +36,13 @@ namespace prjQLPMService
 
         [OperationContract(IsOneWay = true)]
         void Get_dsTrangThaiNV();
+
+        [OperationContract(IsOneWay = true)]
+        void Add_NhanVien(NhanVien newNhanVien, List<string> dsChucNang_newNhanVien);
+
+        [OperationContract(IsOneWay = true)]
+        void Mod_NhanVien(NhanVien modNhanVien, List<string> dsChucNang_modNhanVien);
+
     }
 
     public interface IQLPMCallback
@@ -63,6 +70,9 @@ namespace prjQLPMService
 
         [OperationContract(IsOneWay = true)]
         void Get_dsTrangThaiNV_Callback(IEnumerable<TrangThaiNV> dsTrangThaiNV);
+
+        [OperationContract(IsOneWay = true)]
+        void Add_NhanVien_Callback();
 
     }
 
@@ -236,6 +246,26 @@ namespace prjQLPMService
             get { return tenTrangThaiNV; }
             set { tenTrangThaiNV = value; }
         }
+    }
 
+    [DataContract]
+    public class NhanVien_ChucNang
+    {
+        private string taiKhoanNV;
+        private string maCN;
+
+        [DataMember]
+        public string MaCN
+        {
+            get { return maCN; }
+            set { maCN = value; }
+        }
+
+        [DataMember]
+        public string TaiKhoanNV
+        {
+            get { return taiKhoanNV; }
+            set { taiKhoanNV = value; }
+        }
     }
 }

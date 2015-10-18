@@ -29,6 +29,7 @@ namespace prjClient
         public delegate void frmQLNhanVien_dsNhanVien(svcRefQLPM.NhanVien[] dsNhanVien);
         public delegate void frmQLNhanVien_dsChucNang_By_taikhoanNV(svcRefQLPM.ChucNang[] dSChucNang_By_taikhoanNV);
         public delegate void frmQLNhanVien_dsNhanVien_By_taikhoanNV(svcRefQLPM.NhanVien[] dsNhanVien_By_taikhoanNV);
+        public delegate void frmQLNHanVien_AddResponse();
 
         public frmMain()
         {
@@ -105,7 +106,6 @@ namespace prjClient
         }
 
 
-
         public void Gui_frmQLNhanVien_dsNhanVien_By_taikhoanNV(svcRefQLPM.NhanVien[] dsNhanVien_By_taikhoanNV)
         {
             if (this.MdiChildren.Contains(this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"))))
@@ -113,6 +113,16 @@ namespace prjClient
                 frmQLNhanVien frmChild = (frmQLNhanVien)this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"));
                 frmQLNhanVien_dsNhanVien_By_taikhoanNV gui_frmQLNhanVien_dsNhanVien_By_taikhoanNV = new frmQLNhanVien_dsNhanVien_By_taikhoanNV(frmChild.Nhan_frmQLNhanVien_dsNhanVien_By_taikhoanNV);
                 gui_frmQLNhanVien_dsNhanVien_By_taikhoanNV(dsNhanVien_By_taikhoanNV);
+            }
+        }
+
+        public void Gui_frmQLNHanVien_AddResponse()
+        {
+            if (this.MdiChildren.Contains(this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"))))
+            {
+                frmQLNhanVien frmChild = (frmQLNhanVien)this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"));
+                frmQLNHanVien_AddResponse gui_frmQLNHanVien_AddResponse = new frmQLNHanVien_AddResponse(frmChild.Nhan_frmQLNhanVien_AddResponse);
+                gui_frmQLNHanVien_AddResponse();
             }
         }
 
@@ -565,6 +575,11 @@ namespace prjClient
             _dsTrangThaiNV = dsTrangThaiNV;
         }
 
+        public void Add_NhanVien_Callback()
+        {
+            Gui_frmQLNHanVien_AddResponse();
+        }
+
         #endregion
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -576,25 +591,6 @@ namespace prjClient
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
+        
     }
 }

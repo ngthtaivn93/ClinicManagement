@@ -436,6 +436,18 @@ namespace prjClient.svcRefQLPM {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsTrangThaiNV")]
         System.Threading.Tasks.Task Get_dsTrangThaiNVAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Add_NhanVien")]
+        void Add_NhanVien(prjClient.svcRefQLPM.NhanVien newNhanVien, string[] dsChucNang_newNhanVien);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Add_NhanVien")]
+        System.Threading.Tasks.Task Add_NhanVienAsync(prjClient.svcRefQLPM.NhanVien newNhanVien, string[] dsChucNang_newNhanVien);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Mod_NhanVien")]
+        void Mod_NhanVien(prjClient.svcRefQLPM.NhanVien modNhanVien, string[] dsChucNang_modNhanVien);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Mod_NhanVien")]
+        System.Threading.Tasks.Task Mod_NhanVienAsync(prjClient.svcRefQLPM.NhanVien modNhanVien, string[] dsChucNang_modNhanVien);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -464,6 +476,9 @@ namespace prjClient.svcRefQLPM {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsTrangThaiNV_Callback")]
         void Get_dsTrangThaiNV_Callback(prjClient.svcRefQLPM.TrangThaiNV[] dsTrangThaiNV);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Add_NhanVien_Callback")]
+        void Add_NhanVien_Callback();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -556,6 +571,22 @@ namespace prjClient.svcRefQLPM {
         
         public System.Threading.Tasks.Task Get_dsTrangThaiNVAsync() {
             return base.Channel.Get_dsTrangThaiNVAsync();
+        }
+        
+        public void Add_NhanVien(prjClient.svcRefQLPM.NhanVien newNhanVien, string[] dsChucNang_newNhanVien) {
+            base.Channel.Add_NhanVien(newNhanVien, dsChucNang_newNhanVien);
+        }
+        
+        public System.Threading.Tasks.Task Add_NhanVienAsync(prjClient.svcRefQLPM.NhanVien newNhanVien, string[] dsChucNang_newNhanVien) {
+            return base.Channel.Add_NhanVienAsync(newNhanVien, dsChucNang_newNhanVien);
+        }
+        
+        public void Mod_NhanVien(prjClient.svcRefQLPM.NhanVien modNhanVien, string[] dsChucNang_modNhanVien) {
+            base.Channel.Mod_NhanVien(modNhanVien, dsChucNang_modNhanVien);
+        }
+        
+        public System.Threading.Tasks.Task Mod_NhanVienAsync(prjClient.svcRefQLPM.NhanVien modNhanVien, string[] dsChucNang_modNhanVien) {
+            return base.Channel.Mod_NhanVienAsync(modNhanVien, dsChucNang_modNhanVien);
         }
     }
 }

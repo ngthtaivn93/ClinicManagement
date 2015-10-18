@@ -22,10 +22,11 @@
     <MetadataSource Address="http://localhost/QLPM2/QLPM.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="QLPM2.xsd" MetadataType="Schema" ID="7cc52cc1-172e-4ccd-9b83-eb808e07a99a" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd1" />
+    <MetadataFile FileName="QLPM3.xsd" MetadataType="Schema" ID="2fdcc4f0-853a-481f-b32b-d52919e90b45" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd3" />
+    <MetadataFile FileName="QLPM1.xsd" MetadataType="Schema" ID="b2c8146c-4ef1-4fe8-9476-bf06db194091" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd0" />
     <MetadataFile FileName="QLPM.wsdl" MetadataType="Wsdl" ID="c72fbfd0-d927-4213-94a3-9c6008bf2e98" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?wsdl" />
     <MetadataFile FileName="QLPM.xsd" MetadataType="Schema" ID="d70c7c37-d915-45cf-874b-1e89e5c332a8" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd2" />
-    <MetadataFile FileName="QLPM1.xsd" MetadataType="Schema" ID="b2c8146c-4ef1-4fe8-9476-bf06db194091" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd0" />
-    <MetadataFile FileName="QLPM2.xsd" MetadataType="Schema" ID="7cc52cc1-172e-4ccd-9b83-eb808e07a99a" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

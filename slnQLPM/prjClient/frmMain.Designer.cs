@@ -278,6 +278,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.rbnControl);
             this.IsMdiContainer = true;
+            this.MinimumSize = new System.Drawing.Size(730, 726);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý phòng khám tư";

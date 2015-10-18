@@ -32,6 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.grpThongTinNV = new System.Windows.Forms.GroupBox();
+            this.cboGioiTinhNV = new System.Windows.Forms.ComboBox();
             this.cboTrangThaiNV = new System.Windows.Forms.ComboBox();
             this.dtpNgaySinhNV = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSDTNV = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtGioiTinhNV = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTenNV = new System.Windows.Forms.TextBox();
@@ -53,6 +53,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnThemMoi = new System.Windows.Forms.Button();
             this.btnLamLai = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -108,6 +109,7 @@
             // 
             // grpThongTinNV
             // 
+            this.grpThongTinNV.Controls.Add(this.cboGioiTinhNV);
             this.grpThongTinNV.Controls.Add(this.cboTrangThaiNV);
             this.grpThongTinNV.Controls.Add(this.dtpNgaySinhNV);
             this.grpThongTinNV.Controls.Add(this.label8);
@@ -115,7 +117,6 @@
             this.grpThongTinNV.Controls.Add(this.label7);
             this.grpThongTinNV.Controls.Add(this.txtSDTNV);
             this.grpThongTinNV.Controls.Add(this.label6);
-            this.grpThongTinNV.Controls.Add(this.txtGioiTinhNV);
             this.grpThongTinNV.Controls.Add(this.label5);
             this.grpThongTinNV.Controls.Add(this.label4);
             this.grpThongTinNV.Controls.Add(this.txtTenNV);
@@ -133,6 +134,17 @@
             this.grpThongTinNV.TabIndex = 0;
             this.grpThongTinNV.TabStop = false;
             this.grpThongTinNV.Text = "Thông tin nhân viên";
+            // 
+            // cboGioiTinhNV
+            // 
+            this.cboGioiTinhNV.FormattingEnabled = true;
+            this.cboGioiTinhNV.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
+            this.cboGioiTinhNV.Location = new System.Drawing.Point(114, 151);
+            this.cboGioiTinhNV.Name = "cboGioiTinhNV";
+            this.cboGioiTinhNV.Size = new System.Drawing.Size(267, 21);
+            this.cboGioiTinhNV.TabIndex = 27;
             // 
             // cboTrangThaiNV
             // 
@@ -190,13 +202,6 @@
             this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 24;
             this.label6.Text = "SĐT:";
-            // 
-            // txtGioiTinhNV
-            // 
-            this.txtGioiTinhNV.Location = new System.Drawing.Point(115, 152);
-            this.txtGioiTinhNV.Name = "txtGioiTinhNV";
-            this.txtGioiTinhNV.Size = new System.Drawing.Size(267, 20);
-            this.txtGioiTinhNV.TabIndex = 4;
             // 
             // label5
             // 
@@ -285,6 +290,7 @@
             // 
             this.panel1.Controls.Add(this.btnThemMoi);
             this.panel1.Controls.Add(this.btnLamLai);
+            this.panel1.Controls.Add(this.btnHuy);
             this.panel1.Controls.Add(this.btnLuu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 509);
@@ -297,10 +303,10 @@
             this.btnThemMoi.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnThemMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnThemMoi.Image")));
             this.btnThemMoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThemMoi.Location = new System.Drawing.Point(163, 0);
+            this.btnThemMoi.Location = new System.Drawing.Point(88, 0);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Size = new System.Drawing.Size(75, 34);
-            this.btnThemMoi.TabIndex = 0;
+            this.btnThemMoi.TabIndex = 4;
             this.btnThemMoi.Text = "Thêm mới";
             this.btnThemMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThemMoi.UseVisualStyleBackColor = true;
@@ -311,13 +317,28 @@
             this.btnLamLai.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnLamLai.Image = ((System.Drawing.Image)(resources.GetObject("btnLamLai.Image")));
             this.btnLamLai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLamLai.Location = new System.Drawing.Point(238, 0);
+            this.btnLamLai.Location = new System.Drawing.Point(163, 0);
             this.btnLamLai.Name = "btnLamLai";
             this.btnLamLai.Size = new System.Drawing.Size(75, 34);
-            this.btnLamLai.TabIndex = 1;
+            this.btnLamLai.TabIndex = 3;
             this.btnLamLai.Text = "Làm lại";
             this.btnLamLai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLamLai.UseVisualStyleBackColor = true;
+            this.btnLamLai.Click += new System.EventHandler(this.btnLamLai_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHuy.Location = new System.Drawing.Point(238, 0);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(75, 34);
+            this.btnHuy.TabIndex = 1;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnLuu
             // 
@@ -369,7 +390,6 @@
             this.dgvDSNV.Name = "dgvDSNV";
             this.dgvDSNV.Size = new System.Drawing.Size(936, 257);
             this.dgvDSNV.TabIndex = 0;
-            //this.dgvDSNV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSNV_CellContentClick);
             this.dgvDSNV.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvDSNV_RowStateChanged);
             // 
             // groupBox2
@@ -486,7 +506,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSDTNV;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtGioiTinhNV;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTenNV;
@@ -495,8 +514,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTaiKhoanNV;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnThemMoi;
-        private System.Windows.Forms.Button btnLamLai;
+        private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -507,6 +525,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckedListBox chkChucNang;
         private System.Windows.Forms.ComboBox cboTrangThaiNV;
+        private System.Windows.Forms.ComboBox cboGioiTinhNV;
+        private System.Windows.Forms.Button btnThemMoi;
+        private System.Windows.Forms.Button btnLamLai;
 
 
 

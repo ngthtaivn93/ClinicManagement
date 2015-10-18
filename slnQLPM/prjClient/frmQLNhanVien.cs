@@ -41,6 +41,8 @@ namespace prjClient
             this.ControlBox = false;
             this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
+            btnHuy.Enabled = false;
+            btnLamLai.Enabled = false;
 
             // Đưa datetime picker về chuẩn dd/MM/yyyy
             dtpNgaySinhNV.Format = DateTimePickerFormat.Custom;
@@ -60,6 +62,7 @@ namespace prjClient
             KhoiTao_dtbDSTuyChon();
             AutoComplete_ComboBox(cboTuyChon, _dtbDSTuyChon, "Value", "Key");
             AutoComplete_ComboBox(cboTrangThaiNV, _dsTrangThaiNV, "tenTrangThaiNV", "maTrangThaiNV");
+            cboGioiTinhNV.DropDownStyle = ComboBoxStyle.DropDownList;
 
             KhoiTao_dsChucNang(_dsChucNang);
         }
@@ -113,6 +116,11 @@ namespace prjClient
                     item.SDTNV, item.DiaChiNV,
                     Get_TrangthaiNV(item.MaTrangThaiNV
                     ));
+        }
+
+        public void Nhan_frmQLNhanVien_AddResponse()
+        {
+            btnHuy.PerformClick();
         }
 
         #endregion
@@ -201,74 +209,58 @@ namespace prjClient
             cboIn.ValueMember = valueMember;
         }
 
-
-        private void Clear_ControlsData()
-        {
-            txtTaiKhoanNV.ReadOnly = false;
-            dtpNgaySinhNV.Value = new DateTime(1990, 1, 1);
-
-            cboTrangThaiNV.SelectedItem = cboTrangThaiNV.Items[0];
-
-            // Clear checked chkChucNang
-            chkChucNang.Items.Clear();
-            foreach (var item in _dsChucNang)
-                chkChucNang.Items.Add(item, false);
-
-            foreach (TextBox tb in grpThongTinNV.Controls.OfType<TextBox>())
-                tb.Text = string.Empty;
-        }
-
-        private void btnThemMoi_Click(object sender, EventArgs e)
-        {
-            Clear_ControlsData();
-
-        }
-
         private void dgvDSNV_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (dgvDSNV.SelectedRows.Count != 0)
-            {
-                txtTaiKhoanNV.ReadOnly = true;
-                txtTaiKhoanNV.Text = dgvDSNV.SelectedRows[0].Cells[0].Value.ToString();
-
-                txtMkNV.Text = dgvDSNV.SelectedRows[0].Cells[1].Value.ToString();
-
-                if (dgvDSNV.SelectedRows[0].Cells[2].Value != null)
-                    txtHoVaTenDemNV.Text = dgvDSNV.SelectedRows[0].Cells[2].Value.ToString();
-                else
-                    txtHoVaTenDemNV.Text = string.Empty;
-
-                if (dgvDSNV.SelectedRows[0].Cells[3].Value != null)
-                    txtTenNV.Text = dgvDSNV.SelectedRows[0].Cells[3].Value.ToString();
-                else
-                    txtTenNV.Text = string.Empty;
-
-                dtpNgaySinhNV.Value = Get_NgaySinh(dgvDSNV.SelectedRows[0].Cells[0].Value.ToString());
-
-                if (dgvDSNV.SelectedRows[0].Cells[5].Value != null)
-                    txtGioiTinhNV.Text = dgvDSNV.SelectedRows[0].Cells[5].Value.ToString();
-                else
-                    txtGioiTinhNV.Text = string.Empty;
-
-                if (dgvDSNV.SelectedRows[0].Cells[6].Value != null)
-                    txtSDTNV.Text = dgvDSNV.SelectedRows[0].Cells[6].Value.ToString();
-                else
-                    txtSDTNV.Text = string.Empty;
-
-                if (dgvDSNV.SelectedRows[0].Cells[7].Value != null)
-                    txtDiaChiNV.Text = dgvDSNV.SelectedRows[0].Cells[7].Value.ToString();
-                else
-                    txtDiaChiNV.Text = string.Empty;
-
-                foreach (var item in cboTrangThaiNV.Items)
+            if (btnThemMoi.Enabled == true)
+                if (dgvDSNV.SelectedRows.Count != 0)
                 {
-                    svcRefQLPM.TrangThaiNV tmp = item as svcRefQLPM.TrangThaiNV;
-                    if (tmp.TenTrangThaiNV.Equals(dgvDSNV.SelectedRows[0].Cells[8].Value.ToString()))
-                        cboTrangThaiNV.SelectedItem = item;
-                }
+                    //txtTaiKhoanNV.ReadOnly = true;
+                    //btnLamLai.Enabled = false;
+                    //btnHuy.Enabled = false;
+                    //btnThemMoi.Enabled = true;
+                    //cboTrangThaiNV.Enabled = true;
 
-                _proxy.Get_dsChucNang_By_taikhoanNV(dgvDSNV.SelectedRows[0].Cells[0].Value.ToString());
-            }
+
+                    txtTaiKhoanNV.Text = dgvDSNV.SelectedRows[0].Cells[0].Value.ToString();
+
+                    txtMkNV.Text = dgvDSNV.SelectedRows[0].Cells[1].Value.ToString();
+
+                    if (dgvDSNV.SelectedRows[0].Cells[2].Value != null)
+                        txtHoVaTenDemNV.Text = dgvDSNV.SelectedRows[0].Cells[2].Value.ToString();
+                    else
+                        txtHoVaTenDemNV.Text = string.Empty;
+
+                    if (dgvDSNV.SelectedRows[0].Cells[3].Value != null)
+                        txtTenNV.Text = dgvDSNV.SelectedRows[0].Cells[3].Value.ToString();
+                    else
+                        txtTenNV.Text = string.Empty;
+
+                    dtpNgaySinhNV.Value = Get_NgaySinh(dgvDSNV.SelectedRows[0].Cells[0].Value.ToString());
+
+                    if (dgvDSNV.SelectedRows[0].Cells[5].Value != null)
+                        cboGioiTinhNV.Text = dgvDSNV.SelectedRows[0].Cells[5].Value.ToString();
+                    else
+                        cboGioiTinhNV.Text = cboGioiTinhNV.Items[0].ToString();
+
+                    if (dgvDSNV.SelectedRows[0].Cells[6].Value != null)
+                        txtSDTNV.Text = dgvDSNV.SelectedRows[0].Cells[6].Value.ToString();
+                    else
+                        txtSDTNV.Text = string.Empty;
+
+                    if (dgvDSNV.SelectedRows[0].Cells[7].Value != null)
+                        txtDiaChiNV.Text = dgvDSNV.SelectedRows[0].Cells[7].Value.ToString();
+                    else
+                        txtDiaChiNV.Text = string.Empty;
+
+                    foreach (var item in cboTrangThaiNV.Items)
+                    {
+                        svcRefQLPM.TrangThaiNV tmp = item as svcRefQLPM.TrangThaiNV;
+                        if (tmp.TenTrangThaiNV.Equals(dgvDSNV.SelectedRows[0].Cells[8].Value.ToString()))
+                            cboTrangThaiNV.SelectedItem = item;
+                    }
+
+                    _proxy.Get_dsChucNang_By_taikhoanNV(dgvDSNV.SelectedRows[0].Cells[0].Value.ToString());
+                }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -315,9 +307,13 @@ namespace prjClient
 
         private bool Textbox_IsEmpty()
         {
-            foreach (TextBox tb in grpThongTinNV.Controls.OfType<TextBox>())
-                if (tb.Text.Trim().Equals(string.Empty))
-                    return true;
+            //foreach (TextBox tb in grpThongTinNV.Controls.OfType<TextBox>())
+            //    if (tb.Text.Trim().Equals(string.Empty))
+            //        return true;
+            //return false;
+            if (txtTaiKhoanNV.Text.Trim().Equals(string.Empty)
+                || txtMkNV.Text.Trim().Equals(string.Empty))
+                return true;
             return false;
         }
 
@@ -341,10 +337,10 @@ namespace prjClient
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // Kiểm tra các textbox có trống hay không
+            // Kiểm tra các textbox có trống hay không (Chỉ những trường not null)
             if (!Textbox_IsEmpty())
                 // Kiểm tra xem có chức năng nào được chọn chưa
-                if ( CheckedLBItem_IsChecked())
+                if (CheckedLBItem_IsChecked())
                     if (txtTaiKhoanNV.ReadOnly == false)
                     {
                         // Them moi
@@ -354,12 +350,23 @@ namespace prjClient
                             newNhanVien.TaiKhoanNV = txtTaiKhoanNV.Text;
                             newNhanVien.MkNV = txtMkNV.Text;
                             newNhanVien.DiaChiNV = txtDiaChiNV.Text;
-                            newNhanVien.GioiTinhNV = txtGioiTinhNV.Text.Trim().Equals("Nam") ? true : false;
+                            newNhanVien.GioiTinhNV = cboGioiTinhNV.Text.Trim().Equals("Nam") ? true : false;
                             newNhanVien.HoVaTenDemNV = txtHoVaTenDemNV.Text;
                             newNhanVien.MaTrangThaiNV = "00";
                             newNhanVien.NgaySinhNV = dtpNgaySinhNV.Value;
                             newNhanVien.SDTNV = txtSDTNV.Text;
                             newNhanVien.TenNV = txtTenNV.Text;
+
+                            string[] dsChucNang_newNhanVien = new string[10];
+                            int i = 0;
+                            foreach (var item in chkChucNang.CheckedItems)
+                            {
+                                svcRefQLPM.ChucNang tmp = item as svcRefQLPM.ChucNang;
+                                dsChucNang_newNhanVien[i] = tmp.MaCN;
+                                i++;
+                            }
+
+                            _proxy.Add_NhanVien(newNhanVien, dsChucNang_newNhanVien);
                         }
                         else
                         {
@@ -367,19 +374,92 @@ namespace prjClient
                             txtTaiKhoanNV.Clear();
                             txtTaiKhoanNV.Focus();
                         }
-
-
                     }
                     else
                     {
                         // Sua thong tin
-                    }   
+                        svcRefQLPM.NhanVien modNhanVien = new svcRefQLPM.NhanVien();
+                        modNhanVien.TaiKhoanNV = txtTaiKhoanNV.Text;
+                        modNhanVien.MkNV = txtMkNV.Text;
+                        modNhanVien.DiaChiNV = txtDiaChiNV.Text;
+                        modNhanVien.GioiTinhNV = cboGioiTinhNV.Text.Trim().Equals("Nam") ? true : false;
+                        modNhanVien.HoVaTenDemNV = txtHoVaTenDemNV.Text;
+                        modNhanVien.MaTrangThaiNV = "00";
+                        modNhanVien.NgaySinhNV = dtpNgaySinhNV.Value;
+                        modNhanVien.SDTNV = txtSDTNV.Text;
+                        modNhanVien.TenNV = txtTenNV.Text;
+
+                        string[] dsChucNang_modNhanVien = new string[10];
+                        int i = 0;
+                        foreach (var item in chkChucNang.CheckedItems)
+                        {
+                            svcRefQLPM.ChucNang tmp = item as svcRefQLPM.ChucNang;
+                            dsChucNang_modNhanVien[i] = tmp.MaCN;
+                            i++;
+                        }
+
+                        _proxy.Mod_NhanVien(modNhanVien, dsChucNang_modNhanVien);
+                    }
                 else
                     MessageBox.Show("Yêu cầu chọn ít nhất một chức năng cho nhân viên");
             else
                 MessageBox.Show("Yêu cầu nhập đầy đủ thông tin vào các ô trống");
-            
+
         }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            txtTaiKhoanNV.ReadOnly = true;
+            btnLamLai.Enabled = false;
+            btnHuy.Enabled = false;
+            btnThemMoi.Enabled = true;
+            cboTrangThaiNV.Enabled = true;
+            dgvDSNV_RowStateChanged(null, null);
+
+        }
+
+        private void btnThemMoi_Click(object sender, EventArgs e)
+        {
+            btnThemMoi.Enabled = false;
+            btnHuy.Enabled = true;
+            btnLamLai.Enabled = true;
+
+            txtTaiKhoanNV.ReadOnly = false;
+            dtpNgaySinhNV.Value = new DateTime(1990, 1, 1);
+
+            cboGioiTinhNV.Text = cboGioiTinhNV.Items[0].ToString();
+            cboTrangThaiNV.SelectedItem = cboTrangThaiNV.Items[0];
+            cboTrangThaiNV.Enabled = false;
+
+            // Clear checked chkChucNang
+            chkChucNang.Items.Clear();
+            foreach (var item in _dsChucNang)
+                chkChucNang.Items.Add(item, false);
+
+            // Clear cac textbox
+            foreach (TextBox tb in grpThongTinNV.Controls.OfType<TextBox>())
+                tb.Text = string.Empty;
+            txtTaiKhoanNV.Focus();
+        }
+
+        private void btnLamLai_Click(object sender, EventArgs e)
+        {
+            // Clear checked chkChucNang
+            chkChucNang.Items.Clear();
+            foreach (var item in _dsChucNang)
+                chkChucNang.Items.Add(item, false);
+
+            // Clear cac textbox
+            foreach (TextBox tb in grpThongTinNV.Controls.OfType<TextBox>())
+                tb.Text = string.Empty;
+
+            txtTaiKhoanNV.Focus();
+
+            cboGioiTinhNV.Text = cboGioiTinhNV.Items[0].ToString();
+            dtpNgaySinhNV.Value = new DateTime(1990, 1, 1);
+
+        }
+
 
 
 

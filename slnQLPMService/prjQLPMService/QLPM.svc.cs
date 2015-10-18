@@ -159,7 +159,7 @@ namespace prjQLPMService
                 if (SO_dsClient_Add(taikhoanNV, _callbackClient))
                 {
                     SO_ThayDoiTrangThai_NhanVien(taikhoanNV, "01");
-                    _callbackClient.DangNhap_Callback(true, null, SO_Get_NhanVien(taikhoanNV),SO_Get_dsChucNang_By_taikhoanNV(taikhoanNV));
+                    _callbackClient.DangNhap_Callback(true, null, SO_Get_NhanVien(taikhoanNV), SO_Get_dsChucNang_By_taikhoanNV(taikhoanNV));
 
                     foreach (var active in SO_Get_dsTaiKhoanActive_By_ChucNang("CN010"))
                         foreach (var item in _dsClient)
@@ -169,7 +169,7 @@ namespace prjQLPMService
                             }
                 }
                 else
-                    _callbackClient.DangNhap_Callback(false, "Tài khoản này đã đăng nhập vào hệ thống",null, null);
+                    _callbackClient.DangNhap_Callback(false, "Tài khoản này đã đăng nhập vào hệ thống", null, null);
             else
                 _callbackClient.DangNhap_Callback(false, "Tên tài khoản hoặc mật khẩu không chính xác", null, null);
         }
@@ -184,7 +184,7 @@ namespace prjQLPMService
         {
             SO_ThayDoiTrangThai_NhanVien(taikhoanNV, "00");
             _dsClient.Single(cl => cl.Key.Equals(taikhoanNV)).Value.DangXuat_Callback();
-           SO_dsClient_Remove(taikhoanNV);
+            SO_dsClient_Remove(taikhoanNV);
 
             foreach (var active in SO_Get_dsTaiKhoanActive_By_ChucNang("CN010"))
                 foreach (var item in _dsClient)
@@ -256,6 +256,102 @@ namespace prjQLPMService
                 }));
         }
 
+        public void Add_NhanVien(NhanVien newNhanVien, List<string> dsChucNang_newNhanVien)
+        {
+            _callbackClient = OperationContext.Current.GetCallbackChannel<IQLPMCallback>();
+
+            // Tao mot doi tuong tbNhanVien moi
+            tbNhanVien tbNewNhanVien = new tbNhanVien();
+
+            tbNewNhanVien.taiKhoanNV = newNhanVien.TaiKhoanNV;
+            tbNewNhanVien.diaChiNV = newNhanVien.DiaChiNV;
+            tbNewNhanVien.gioiTinhNV = newNhanVien.GioiTinhNV;
+            tbNewNhanVien.hoVaTenDemNV = newNhanVien.HoVaTenDemNV;
+            tbNewNhanVien.maTrangThaiNV = newNhanVien.MaTrangThaiNV;
+            tbNewNhanVien.mkNV = newNhanVien.MkNV;
+            tbNewNhanVien.ngaySinhNV = newNhanVien.NgaySinhNV;
+            tbNewNhanVien.sDTNV = newNhanVien.SDTNV;
+            tbNewNhanVien.tenNV = newNhanVien.TenNV;
+
+            // Them nhan vien vao db
+            db.tbNhanViens.InsertOnSubmit(tbNewNhanVien);
+            db.SubmitChanges();
+
+            // Them danh sach chuc nang cho nhan vien
+            foreach (var item in dsChucNang_newNhanVien)
+                if (item != null)
+                {
+                    tbNhanVien_ChucNang nVien_CNang = new tbNhanVien_ChucNang();
+                    nVien_CNang.taiKhoanNV = newNhanVien.TaiKhoanNV;
+                    nVien_CNang.maCN = item;
+
+                    db.tbNhanVien_ChucNangs.InsertOnSubmit(nVien_CNang);
+                    db.SubmitChanges();
+                }
+
+            // Gui cap nhat danh sach nhan vien cho tat ca cac client dang active va co chuc nang QLNhanVien
+            foreach (var active in SO_Get_dsTaiKhoanActive_By_ChucNang("CN010"))
+                foreach (var item in _dsClient)
+                    if (item.Key.Equals(active))
+                        item.Value.Get_dsNhanVien_Callback(SO_Get_dsNhanVien());
+
+            // Gui Add_nhanVien_callback ve cho client invoke
+            _callbackClient.Add_NhanVien_Callback();
+        }
+
+        public void Mod_NhanVien(NhanVien modNhanVien, List<string> dsChucNang_modNhanVien)
+        {
+            _callbackClient = OperationContext.Current.GetCallbackChannel<IQLPMCallback>();
+
+            // Modify thong tin cua nhan vien
+            tbNhanVien tbModNhanVien = db.tbNhanViens.SingleOrDefault(nv => nv.taiKhoanNV.Equals(modNhanVien.TaiKhoanNV));
+
+            tbModNhanVien.taiKhoanNV = modNhanVien.TaiKhoanNV;
+            tbModNhanVien.diaChiNV = modNhanVien.DiaChiNV;
+            tbModNhanVien.gioiTinhNV = modNhanVien.GioiTinhNV;
+            tbModNhanVien.hoVaTenDemNV = modNhanVien.HoVaTenDemNV;
+            tbModNhanVien.maTrangThaiNV = modNhanVien.MaTrangThaiNV;
+            tbModNhanVien.mkNV = modNhanVien.MkNV;
+            tbModNhanVien.ngaySinhNV = modNhanVien.NgaySinhNV;
+            tbModNhanVien.sDTNV = modNhanVien.SDTNV;
+            tbModNhanVien.tenNV = modNhanVien.TenNV;
+
+            db.SubmitChanges();
+
+            // Them danh sach chuc nang cho nhan vien
+            // Gom 2 cong viec: Xoa ds chuc nang cu, them danh sach chuc nang moi
+
+            // Xoa ds chuc nang cu
+            foreach (tbNhanVien_ChucNang item in db.tbNhanVien_ChucNangs)
+                if (item.taiKhoanNV.Equals(modNhanVien.TaiKhoanNV))
+                {
+                    db.tbNhanVien_ChucNangs.DeleteOnSubmit(item);
+                    db.SubmitChanges();
+                }
+            
+            // Them danh sach chuc nang moi
+            foreach (var item in dsChucNang_modNhanVien)
+                if (item != null)
+                {
+                    tbNhanVien_ChucNang nVien_CNang = new tbNhanVien_ChucNang();
+                    nVien_CNang.taiKhoanNV = modNhanVien.TaiKhoanNV;
+                    nVien_CNang.maCN = item;
+
+                    db.tbNhanVien_ChucNangs.InsertOnSubmit(nVien_CNang);
+                    db.SubmitChanges();
+                }
+
+            // Gui cap nhat danh sach nhan vien cho tat ca cac client dang active va co chuc nang QLNhanVien
+            foreach (var active in SO_Get_dsTaiKhoanActive_By_ChucNang("CN010"))
+                foreach (var item in _dsClient)
+                    if (item.Key.Equals(active))
+                        item.Value.Get_dsNhanVien_Callback(SO_Get_dsNhanVien());
+
+            // Gui  Add_nhanVien_callback ve cho client invoke (callback cua mod tuong tu nhu add)
+            _callbackClient.Add_NhanVien_Callback();
+        }
+
         #endregion
+
     }
 }

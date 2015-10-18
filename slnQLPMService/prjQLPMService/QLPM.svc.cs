@@ -296,7 +296,7 @@ namespace prjQLPMService
                         item.Value.Get_dsNhanVien_Callback(SO_Get_dsNhanVien());
 
             // Gui Add_nhanVien_callback ve cho client invoke
-            _callbackClient.Add_NhanVien_Callback();
+            _callbackClient.Add_NhanVien_Callback(newNhanVien.TaiKhoanNV);
         }
 
         public void Mod_NhanVien(NhanVien modNhanVien, List<string> dsChucNang_modNhanVien)
@@ -348,7 +348,7 @@ namespace prjQLPMService
                         item.Value.Get_dsNhanVien_Callback(SO_Get_dsNhanVien());
 
             // Gui  Add_nhanVien_callback ve cho client invoke (callback cua mod tuong tu nhu add)
-            _callbackClient.Add_NhanVien_Callback();
+            _callbackClient.Add_NhanVien_Callback(modNhanVien.TaiKhoanNV);
         }
 
         #endregion

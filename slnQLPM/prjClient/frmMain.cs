@@ -29,7 +29,7 @@ namespace prjClient
         public delegate void frmQLNhanVien_dsNhanVien(svcRefQLPM.NhanVien[] dsNhanVien);
         public delegate void frmQLNhanVien_dsChucNang_By_taikhoanNV(svcRefQLPM.ChucNang[] dSChucNang_By_taikhoanNV);
         public delegate void frmQLNhanVien_dsNhanVien_By_taikhoanNV(svcRefQLPM.NhanVien[] dsNhanVien_By_taikhoanNV);
-        public delegate void frmQLNHanVien_AddResponse();
+        public delegate void frmQLNHanVien_AddResponse(string taikhoanNV);
 
         public frmMain()
         {
@@ -116,13 +116,13 @@ namespace prjClient
             }
         }
 
-        public void Gui_frmQLNHanVien_AddResponse()
+        public void Gui_frmQLNHanVien_AddResponse(string taikhoanNV)
         {
             if (this.MdiChildren.Contains(this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"))))
             {
                 frmQLNhanVien frmChild = (frmQLNhanVien)this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"));
                 frmQLNHanVien_AddResponse gui_frmQLNHanVien_AddResponse = new frmQLNHanVien_AddResponse(frmChild.Nhan_frmQLNhanVien_AddResponse);
-                gui_frmQLNHanVien_AddResponse();
+                gui_frmQLNHanVien_AddResponse(taikhoanNV);
             }
         }
 
@@ -575,9 +575,9 @@ namespace prjClient
             _dsTrangThaiNV = dsTrangThaiNV;
         }
 
-        public void Add_NhanVien_Callback()
+        public void Add_NhanVien_Callback(string taikhoanNV)
         {
-            Gui_frmQLNHanVien_AddResponse();
+            Gui_frmQLNHanVien_AddResponse(taikhoanNV);
         }
 
         #endregion

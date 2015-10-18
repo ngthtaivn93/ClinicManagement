@@ -72,7 +72,7 @@ namespace prjQLPMService
         void Get_dsTrangThaiNV_Callback(IEnumerable<TrangThaiNV> dsTrangThaiNV);
 
         [OperationContract(IsOneWay = true)]
-        void Add_NhanVien_Callback();
+        void Add_NhanVien_Callback(string taikhoanNV);
 
     }
 

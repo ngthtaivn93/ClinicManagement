@@ -118,8 +118,11 @@ namespace prjClient
                     ));
         }
 
-        public void Nhan_frmQLNhanVien_AddResponse()
+        public void Nhan_frmQLNhanVien_AddResponse(string taikhoanNV)
         {
+            foreach (DataGridViewRow row in dgvDSNV.Rows)
+                if (row.Cells[0].Value.ToString().Equals(taikhoanNV))
+                    row.Selected = true;
             btnHuy.PerformClick();
         }
 

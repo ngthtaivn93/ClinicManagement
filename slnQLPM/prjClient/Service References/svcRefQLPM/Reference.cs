@@ -478,7 +478,7 @@ namespace prjClient.svcRefQLPM {
         void Get_dsTrangThaiNV_Callback(prjClient.svcRefQLPM.TrangThaiNV[] dsTrangThaiNV);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Add_NhanVien_Callback")]
-        void Add_NhanVien_Callback();
+        void Add_NhanVien_Callback(string taikhoanNV);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

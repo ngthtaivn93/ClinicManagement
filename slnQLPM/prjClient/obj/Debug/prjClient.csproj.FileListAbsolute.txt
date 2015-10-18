@@ -52,3 +52,4 @@ E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPM\prjClient\bin\Debug\prjClient.
 E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPM\prjClient\bin\Debug\prjClient.pdb
 E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPM\prjClient\bin\Debug\Interop.FOXITREADERLib.dll
 E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPM\prjClient\bin\Debug\AxInterop.FOXITREADERLib.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPM\prjClient\obj\Debug\prjClient.csprojResolveAssemblyReference.cache

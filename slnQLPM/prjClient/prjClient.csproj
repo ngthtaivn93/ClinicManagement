@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3369002F-F620-453D-8656-396970453C7B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>prjClient</RootNamespace>
+    <AssemblyName>prjClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmChiDinhDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiDinhDichVu.Designer.cs">
+      <DependentUpon>frmChiDinhDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLPhongKham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLPhongKham.Designer.cs">
+      <DependentUpon>frmQLPhongKham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLNhanVien.Designer.cs">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLDichVu.Designer.cs">
+      <DependentUpon>frmQLDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQLThuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQLThuoc.Designer.cs">
+      <DependentUpon>frmQLThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPhatThuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPhatThuoc.Designer.cs">
+      <DependentUpon>frmPhatThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCDHA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCDHA.Designer.cs">
+      <DependentUpon>frmCDHA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKhamBenh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKhamBenh.Designer.cs">
+      <DependentUpon>frmKhamBenh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongTinNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongTinNV.Designer.cs">
+      <DependentUpon>frmThongTinNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDangNhap.Designer.cs">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongTinPK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongTinPK.Designer.cs">
+      <DependentUpon>frmThongTinPK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThuNgan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThuNgan.Designer.cs">
+      <DependentUpon>frmThuNgan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTiepNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTiepNhan.Designer.cs">
+      <DependentUpon>frmTiepNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXetNghiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXetNghiem.Designer.cs">
+      <DependentUpon>frmXetNghiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\svcRefQLPM\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmChiDinhDichVu.resx">
+      <DependentUpon>frmChiDinhDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLPhongKham.resx">
+      <DependentUpon>frmQLPhongKham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLNhanVien.resx">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLDichVu.resx">
+      <DependentUpon>frmQLDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQLThuoc.resx">
+      <DependentUpon>frmQLThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPhatThuoc.resx">
+      <DependentUpon>frmPhatThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCDHA.resx">
+      <DependentUpon>frmCDHA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKhamBenh.resx">
+      <DependentUpon>frmKhamBenh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongTinNV.resx">
+      <DependentUpon>frmThongTinNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongTinPK.resx">
+      <DependentUpon>frmThongTinPK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThuNgan.resx">
+      <DependentUpon>frmThuNgan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTiepNhan.resx">
+      <DependentUpon>frmTiepNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXetNghiem.resx">
+      <DependentUpon>frmXetNghiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\svcRefQLPM\QLPM.wsdl" />
+    <None Include="Service References\svcRefQLPM\QLPM.xsd" />
+    <None Include="Service References\svcRefQLPM\QLPM1.xsd" />
+    <None Include="Service References\svcRefQLPM\QLPM2.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxFOXITREADERLib">
+      <Guid>{3A8BD65E-9922-4162-A649-83F2D5326BBE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="FOXITREADERLib">
+      <Guid>{3A8BD65E-9922-4162-A649-83F2D5326BBE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\svcRefQLPM\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\svcRefQLPM\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\svcRefQLPM\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\svcRefQLPM\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

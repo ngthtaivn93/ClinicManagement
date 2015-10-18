@@ -1,0 +1,14 @@
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjQLPMService\obj\Debug\prjQLPMService.csprojResolveAssemblyReference.cache
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjQLPMService\bin\prjQLPMService.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjQLPMService\bin\prjQLPMService.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjQLPMService\bin\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjQLPMService\bin\prjDB.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjQLPMService\obj\Debug\prjQLPMService.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjQLPMService\obj\Debug\prjQLPMService.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjQLPMService\obj\Debug\prjQLPMService.csprojResolveAssemblyReference.cache
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjQLPMService\obj\Debug\prjQLPMService.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjQLPMService\bin\prjQLPMService.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjQLPMService\bin\prjQLPMService.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjQLPMService\bin\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjQLPMService\bin\prjDB.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjQLPMService\obj\Debug\prjQLPMService.pdb

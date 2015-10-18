@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/QLPM2/QLPM.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/prjQLPMService" />
+  <xs:element name="DangNhap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taikhoanNV" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mK" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DangXuat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taikhoanNV" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsNhanVien">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsChucNang_By_taikhoanNV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taikhoanNV" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsChucNang">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_PhongKham">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsNhanVien_By_taikhoanNV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taikhoanNV" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsTrangThaiNV">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DangNhap_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ketQua" type="xs:boolean" />
+        <xs:element minOccurs="0" name="msg" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="nhanVien" nillable="true" type="q1:NhanVien" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsChucNang_By_taikhoanNV" nillable="true" type="q2:ArrayOfChucNang" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DangXuat_Callback">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsNhanVien_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsNhanVien" nillable="true" type="q3:ArrayOfNhanVien" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsChucNang_By_taikhoanNV_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsChucNang_By_taikhoanNV" nillable="true" type="q4:ArrayOfChucNang" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsChucNang_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsChucNang" nillable="true" type="q5:ArrayOfChucNang" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_PhongKham_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="phongKham" nillable="true" type="q6:ThongTinPhongKham" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsNhanVien_By_taikhoanNV_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsNhanVien_By_taikhoanNV" nillable="true" type="q7:ArrayOfNhanVien" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsTrangThaiNV_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsTrangThaiNV" nillable="true" type="q8:ArrayOfTrangThaiNV" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

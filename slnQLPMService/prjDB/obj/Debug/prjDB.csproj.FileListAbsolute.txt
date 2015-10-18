@@ -1,0 +1,9 @@
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\bin\Debug\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\bin\Debug\prjDB.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\obj\Debug\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\obj\Debug\prjDB.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\obj\Debug\prjDB.csprojResolveAssemblyReference.cache
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjDB\bin\Debug\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjDB\bin\Debug\prjDB.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjDB\obj\Debug\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM2\slnQLPMService\prjDB\obj\Debug\prjDB.pdb

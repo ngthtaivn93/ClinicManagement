@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7b13ee60-682e-42fa-b5b6-ba8d411e4a37" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/QLPM2/QLPM.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="QLPM.wsdl" MetadataType="Wsdl" ID="c72fbfd0-d927-4213-94a3-9c6008bf2e98" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?wsdl" />
+    <MetadataFile FileName="QLPM.xsd" MetadataType="Schema" ID="d70c7c37-d915-45cf-874b-1e89e5c332a8" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd2" />
+    <MetadataFile FileName="QLPM1.xsd" MetadataType="Schema" ID="b2c8146c-4ef1-4fe8-9476-bf06db194091" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd0" />
+    <MetadataFile FileName="QLPM2.xsd" MetadataType="Schema" ID="7cc52cc1-172e-4ccd-9b83-eb808e07a99a" SourceId="1" SourceUrl="http://localhost/QLPM2/QLPM.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

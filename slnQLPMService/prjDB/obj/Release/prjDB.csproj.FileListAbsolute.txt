@@ -1,0 +1,5 @@
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\bin\Release\prjDB.dll.config
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\bin\Release\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\bin\Release\prjDB.pdb
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\obj\Release\prjDB.dll
+E:\Study\WorkSpace\VisualStudio2012\QLPM\slnQLPMService\prjDB\obj\Release\prjDB.pdb

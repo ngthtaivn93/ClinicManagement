@@ -259,6 +259,7 @@ namespace prjClient
             foreach (TextBox tb in grpThongTinBenhNhan.Controls.OfType<TextBox>())
                 tb.Text = string.Empty;
 
+            txtHoVaTenDemBN.Focus();
             txtMaBN.Text = Get_MaBN();
         }
 

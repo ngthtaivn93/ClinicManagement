@@ -46,6 +46,8 @@ namespace prjQLPMService
         [OperationContract(IsOneWay = true)]
         void Get_dsDichVu();
 
+        [OperationContract(IsOneWay = true)]
+        void Get_dsBenhNhan();
     }
 
     public interface IQLPMCallback
@@ -79,6 +81,9 @@ namespace prjQLPMService
 
         [OperationContract(IsOneWay = true)]
         void Get_dsDichVu_By_ChucNang_Callback(IEnumerable<DichVu> dsDichVu_By_ChucNang);
+
+        [OperationContract(IsOneWay = true)]
+        void Get_dsBenhNhan_Callback(IEnumerable<BenhNhan> dsBenhNhan);
     }
 
     [DataContract]
@@ -271,6 +276,75 @@ namespace prjQLPMService
         {
             get { return taiKhoanNV; }
             set { taiKhoanNV = value; }
+        }
+    }
+
+    [DataContract]
+    public class BenhNhan
+    {
+        private string maBN;
+        private string hoVaTenDemBN;
+        private string tenBN;
+        private DateTime ngaySinhBN;
+        private bool gioiTinhBN;
+        private string sDTBN;
+        private string diaChiBN;
+        private string trangThaiBN;
+
+        [DataMember(Order = 1)]
+        public string MaBN
+        {
+            get { return maBN; }
+            set { maBN = value; }
+        }
+
+        [DataMember(Order = 2)]
+        public string HoVaTenDemBN
+        {
+            get { return hoVaTenDemBN; }
+            set { hoVaTenDemBN = value; }
+        }
+
+        [DataMember(Order = 4)]
+        public string TenBN
+        {
+            get { return tenBN; }
+            set { tenBN = value; }
+        }
+
+        [DataMember(Order = 5)]
+        public DateTime NgaySinhBN
+        {
+            get { return ngaySinhBN; }
+            set { ngaySinhBN = value; }
+        }
+
+        [DataMember(Order = 6)]
+        public bool GioiTinhBN
+        {
+            get { return gioiTinhBN; }
+            set { gioiTinhBN = value; }
+        }
+
+        [DataMember(Order = 7)]
+        public string SDTBN
+        {
+            get { return sDTBN; }
+            set { sDTBN = value; }
+        }
+
+        [DataMember(Order = 8)]
+        public string DiaChiBN
+        {
+            get { return diaChiBN; }
+            set { diaChiBN = value; }
+        }
+
+        [DataMember(Order = 9)]
+        public string TrangThaiBN
+        {
+            get { return trangThaiBN; }
+            set { trangThaiBN = value; }
         }
     }
 }

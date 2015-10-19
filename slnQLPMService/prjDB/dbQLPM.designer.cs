@@ -33,9 +33,9 @@ namespace prjDB
     partial void InserttbBenhNhan(tbBenhNhan instance);
     partial void UpdatetbBenhNhan(tbBenhNhan instance);
     partial void DeletetbBenhNhan(tbBenhNhan instance);
-    partial void InserttbTrangThaiThuoc(tbTrangThaiThuoc instance);
-    partial void UpdatetbTrangThaiThuoc(tbTrangThaiThuoc instance);
-    partial void DeletetbTrangThaiThuoc(tbTrangThaiThuoc instance);
+    partial void InserttbTrangThaiNV(tbTrangThaiNV instance);
+    partial void UpdatetbTrangThaiNV(tbTrangThaiNV instance);
+    partial void DeletetbTrangThaiNV(tbTrangThaiNV instance);
     partial void InserttbChiTietDonThuoc(tbChiTietDonThuoc instance);
     partial void UpdatetbChiTietDonThuoc(tbChiTietDonThuoc instance);
     partial void DeletetbChiTietDonThuoc(tbChiTietDonThuoc instance);
@@ -78,12 +78,6 @@ namespace prjDB
     partial void InserttbThuoc(tbThuoc instance);
     partial void UpdatetbThuoc(tbThuoc instance);
     partial void DeletetbThuoc(tbThuoc instance);
-    partial void InserttbTrangThaiBN(tbTrangThaiBN instance);
-    partial void UpdatetbTrangThaiBN(tbTrangThaiBN instance);
-    partial void DeletetbTrangThaiBN(tbTrangThaiBN instance);
-    partial void InserttbTrangThaiNV(tbTrangThaiNV instance);
-    partial void UpdatetbTrangThaiNV(tbTrangThaiNV instance);
-    partial void DeletetbTrangThaiNV(tbTrangThaiNV instance);
     #endregion
 		
 		public dbQLPMDataContext() : 
@@ -124,11 +118,11 @@ namespace prjDB
 			}
 		}
 		
-		public System.Data.Linq.Table<tbTrangThaiThuoc> tbTrangThaiThuocs
+		public System.Data.Linq.Table<tbTrangThaiNV> tbTrangThaiNVs
 		{
 			get
 			{
-				return this.GetTable<tbTrangThaiThuoc>();
+				return this.GetTable<tbTrangThaiNV>();
 			}
 		}
 		
@@ -243,22 +237,6 @@ namespace prjDB
 				return this.GetTable<tbThuoc>();
 			}
 		}
-		
-		public System.Data.Linq.Table<tbTrangThaiBN> tbTrangThaiBNs
-		{
-			get
-			{
-				return this.GetTable<tbTrangThaiBN>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tbTrangThaiNV> tbTrangThaiNVs
-		{
-			get
-			{
-				return this.GetTable<tbTrangThaiNV>();
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbBenhNhan")]
@@ -281,7 +259,7 @@ namespace prjDB
 		
 		private string _diaChiBN;
 		
-		private string _maTrangThaiBN;
+		private string _trangThaiBN;
 		
 		private EntitySet<tbDonThuoc> _tbDonThuocs;
 		
@@ -292,8 +270,6 @@ namespace prjDB
 		private EntitySet<tbPhieuCDHA> _tbPhieuCDHAs;
 		
 		private EntitySet<tbPhieuXN> _tbPhieuXNs;
-		
-		private EntityRef<tbTrangThaiBN> _tbTrangThaiBN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -313,8 +289,8 @@ namespace prjDB
     partial void OnsDTBNChanged();
     partial void OndiaChiBNChanging(string value);
     partial void OndiaChiBNChanged();
-    partial void OnmaTrangThaiBNChanging(string value);
-    partial void OnmaTrangThaiBNChanged();
+    partial void OntrangThaiBNChanging(string value);
+    partial void OntrangThaiBNChanged();
     #endregion
 		
 		public tbBenhNhan()
@@ -324,7 +300,6 @@ namespace prjDB
 			this._tbPhieuCDDVs = new EntitySet<tbPhieuCDDV>(new Action<tbPhieuCDDV>(this.attach_tbPhieuCDDVs), new Action<tbPhieuCDDV>(this.detach_tbPhieuCDDVs));
 			this._tbPhieuCDHAs = new EntitySet<tbPhieuCDHA>(new Action<tbPhieuCDHA>(this.attach_tbPhieuCDHAs), new Action<tbPhieuCDHA>(this.detach_tbPhieuCDHAs));
 			this._tbPhieuXNs = new EntitySet<tbPhieuXN>(new Action<tbPhieuXN>(this.attach_tbPhieuXNs), new Action<tbPhieuXN>(this.detach_tbPhieuXNs));
-			this._tbTrangThaiBN = default(EntityRef<tbTrangThaiBN>);
 			OnCreated();
 		}
 		
@@ -468,26 +443,22 @@ namespace prjDB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maTrangThaiBN", DbType="Char(2) NOT NULL", CanBeNull=false)]
-		public string maTrangThaiBN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trangThaiBN", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string trangThaiBN
 		{
 			get
 			{
-				return this._maTrangThaiBN;
+				return this._trangThaiBN;
 			}
 			set
 			{
-				if ((this._maTrangThaiBN != value))
+				if ((this._trangThaiBN != value))
 				{
-					if (this._tbTrangThaiBN.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnmaTrangThaiBNChanging(value);
+					this.OntrangThaiBNChanging(value);
 					this.SendPropertyChanging();
-					this._maTrangThaiBN = value;
-					this.SendPropertyChanged("maTrangThaiBN");
-					this.OnmaTrangThaiBNChanged();
+					this._trangThaiBN = value;
+					this.SendPropertyChanged("trangThaiBN");
+					this.OntrangThaiBNChanged();
 				}
 			}
 		}
@@ -554,40 +525,6 @@ namespace prjDB
 			set
 			{
 				this._tbPhieuXNs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTrangThaiBN_tbBenhNhan", Storage="_tbTrangThaiBN", ThisKey="maTrangThaiBN", OtherKey="maTrangThaiBN", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public tbTrangThaiBN tbTrangThaiBN
-		{
-			get
-			{
-				return this._tbTrangThaiBN.Entity;
-			}
-			set
-			{
-				tbTrangThaiBN previousValue = this._tbTrangThaiBN.Entity;
-				if (((previousValue != value) 
-							|| (this._tbTrangThaiBN.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbTrangThaiBN.Entity = null;
-						previousValue.tbBenhNhans.Remove(this);
-					}
-					this._tbTrangThaiBN.Entity = value;
-					if ((value != null))
-					{
-						value.tbBenhNhans.Add(this);
-						this._maTrangThaiBN = value.maTrangThaiBN;
-					}
-					else
-					{
-						this._maTrangThaiBN = default(string);
-					}
-					this.SendPropertyChanged("tbTrangThaiBN");
-				}
 			}
 		}
 		
@@ -672,84 +609,84 @@ namespace prjDB
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTrangThaiThuoc")]
-	public partial class tbTrangThaiThuoc : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTrangThaiNV")]
+	public partial class tbTrangThaiNV : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _maTrangThaiThuoc;
+		private string _maTrangThaiNV;
 		
-		private string _tenTrangThaiThuoc;
+		private string _tenTrangThaiNV;
 		
-		private EntitySet<tbThuoc> _tbThuocs;
+		private EntitySet<tbNhanVien> _tbNhanViens;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnmaTrangThaiThuocChanging(string value);
-    partial void OnmaTrangThaiThuocChanged();
-    partial void OntenTrangThaiThuocChanging(string value);
-    partial void OntenTrangThaiThuocChanged();
+    partial void OnmaTrangThaiNVChanging(string value);
+    partial void OnmaTrangThaiNVChanged();
+    partial void OntenTrangThaiNVChanging(string value);
+    partial void OntenTrangThaiNVChanged();
     #endregion
 		
-		public tbTrangThaiThuoc()
+		public tbTrangThaiNV()
 		{
-			this._tbThuocs = new EntitySet<tbThuoc>(new Action<tbThuoc>(this.attach_tbThuocs), new Action<tbThuoc>(this.detach_tbThuocs));
+			this._tbNhanViens = new EntitySet<tbNhanVien>(new Action<tbNhanVien>(this.attach_tbNhanViens), new Action<tbNhanVien>(this.detach_tbNhanViens));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maTrangThaiThuoc", DbType="Char(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string maTrangThaiThuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maTrangThaiNV", DbType="Char(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string maTrangThaiNV
 		{
 			get
 			{
-				return this._maTrangThaiThuoc;
+				return this._maTrangThaiNV;
 			}
 			set
 			{
-				if ((this._maTrangThaiThuoc != value))
+				if ((this._maTrangThaiNV != value))
 				{
-					this.OnmaTrangThaiThuocChanging(value);
+					this.OnmaTrangThaiNVChanging(value);
 					this.SendPropertyChanging();
-					this._maTrangThaiThuoc = value;
-					this.SendPropertyChanged("maTrangThaiThuoc");
-					this.OnmaTrangThaiThuocChanged();
+					this._maTrangThaiNV = value;
+					this.SendPropertyChanged("maTrangThaiNV");
+					this.OnmaTrangThaiNVChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenTrangThaiThuoc", DbType="NVarChar(100)")]
-		public string tenTrangThaiThuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenTrangThaiNV", DbType="NVarChar(100)")]
+		public string tenTrangThaiNV
 		{
 			get
 			{
-				return this._tenTrangThaiThuoc;
+				return this._tenTrangThaiNV;
 			}
 			set
 			{
-				if ((this._tenTrangThaiThuoc != value))
+				if ((this._tenTrangThaiNV != value))
 				{
-					this.OntenTrangThaiThuocChanging(value);
+					this.OntenTrangThaiNVChanging(value);
 					this.SendPropertyChanging();
-					this._tenTrangThaiThuoc = value;
-					this.SendPropertyChanged("tenTrangThaiThuoc");
-					this.OntenTrangThaiThuocChanged();
+					this._tenTrangThaiNV = value;
+					this.SendPropertyChanged("tenTrangThaiNV");
+					this.OntenTrangThaiNVChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTrangThaiThuoc_tbThuoc", Storage="_tbThuocs", ThisKey="maTrangThaiThuoc", OtherKey="maTrangThaiThuoc")]
-		public EntitySet<tbThuoc> tbThuocs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTrangThaiNV_tbNhanVien", Storage="_tbNhanViens", ThisKey="maTrangThaiNV", OtherKey="maTrangThaiNV")]
+		public EntitySet<tbNhanVien> tbNhanViens
 		{
 			get
 			{
-				return this._tbThuocs;
+				return this._tbNhanViens;
 			}
 			set
 			{
-				this._tbThuocs.Assign(value);
+				this._tbNhanViens.Assign(value);
 			}
 		}
 		
@@ -773,16 +710,16 @@ namespace prjDB
 			}
 		}
 		
-		private void attach_tbThuocs(tbThuoc entity)
+		private void attach_tbNhanViens(tbNhanVien entity)
 		{
 			this.SendPropertyChanging();
-			entity.tbTrangThaiThuoc = this;
+			entity.tbTrangThaiNV = this;
 		}
 		
-		private void detach_tbThuocs(tbThuoc entity)
+		private void detach_tbNhanViens(tbNhanVien entity)
 		{
 			this.SendPropertyChanging();
-			entity.tbTrangThaiThuoc = null;
+			entity.tbTrangThaiNV = null;
 		}
 	}
 	
@@ -3946,11 +3883,9 @@ namespace prjDB
 		
 		private System.Nullable<System.DateTime> _hanSuDung;
 		
-		private string _maTrangThaiThuoc;
+		private string _trangThaiThuoc;
 		
 		private EntitySet<tbChiTietDonThuoc> _tbChiTietDonThuocs;
-		
-		private EntityRef<tbTrangThaiThuoc> _tbTrangThaiThuoc;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3968,14 +3903,13 @@ namespace prjDB
     partial void OndonGiaChanged();
     partial void OnhanSuDungChanging(System.Nullable<System.DateTime> value);
     partial void OnhanSuDungChanged();
-    partial void OnmaTrangThaiThuocChanging(string value);
-    partial void OnmaTrangThaiThuocChanged();
+    partial void OntrangThaiThuocChanging(string value);
+    partial void OntrangThaiThuocChanged();
     #endregion
 		
 		public tbThuoc()
 		{
 			this._tbChiTietDonThuocs = new EntitySet<tbChiTietDonThuoc>(new Action<tbChiTietDonThuoc>(this.attach_tbChiTietDonThuocs), new Action<tbChiTietDonThuoc>(this.detach_tbChiTietDonThuocs));
-			this._tbTrangThaiThuoc = default(EntityRef<tbTrangThaiThuoc>);
 			OnCreated();
 		}
 		
@@ -4099,26 +4033,22 @@ namespace prjDB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maTrangThaiThuoc", DbType="Char(2) NOT NULL", CanBeNull=false)]
-		public string maTrangThaiThuoc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trangThaiThuoc", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string trangThaiThuoc
 		{
 			get
 			{
-				return this._maTrangThaiThuoc;
+				return this._trangThaiThuoc;
 			}
 			set
 			{
-				if ((this._maTrangThaiThuoc != value))
+				if ((this._trangThaiThuoc != value))
 				{
-					if (this._tbTrangThaiThuoc.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnmaTrangThaiThuocChanging(value);
+					this.OntrangThaiThuocChanging(value);
 					this.SendPropertyChanging();
-					this._maTrangThaiThuoc = value;
-					this.SendPropertyChanged("maTrangThaiThuoc");
-					this.OnmaTrangThaiThuocChanged();
+					this._trangThaiThuoc = value;
+					this.SendPropertyChanged("trangThaiThuoc");
+					this.OntrangThaiThuocChanged();
 				}
 			}
 		}
@@ -4133,40 +4063,6 @@ namespace prjDB
 			set
 			{
 				this._tbChiTietDonThuocs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTrangThaiThuoc_tbThuoc", Storage="_tbTrangThaiThuoc", ThisKey="maTrangThaiThuoc", OtherKey="maTrangThaiThuoc", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public tbTrangThaiThuoc tbTrangThaiThuoc
-		{
-			get
-			{
-				return this._tbTrangThaiThuoc.Entity;
-			}
-			set
-			{
-				tbTrangThaiThuoc previousValue = this._tbTrangThaiThuoc.Entity;
-				if (((previousValue != value) 
-							|| (this._tbTrangThaiThuoc.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbTrangThaiThuoc.Entity = null;
-						previousValue.tbThuocs.Remove(this);
-					}
-					this._tbTrangThaiThuoc.Entity = value;
-					if ((value != null))
-					{
-						value.tbThuocs.Add(this);
-						this._maTrangThaiThuoc = value.maTrangThaiThuoc;
-					}
-					else
-					{
-						this._maTrangThaiThuoc = default(string);
-					}
-					this.SendPropertyChanged("tbTrangThaiThuoc");
-				}
 			}
 		}
 		
@@ -4200,234 +4096,6 @@ namespace prjDB
 		{
 			this.SendPropertyChanging();
 			entity.tbThuoc = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTrangThaiBN")]
-	public partial class tbTrangThaiBN : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _maTrangThaiBN;
-		
-		private string _tenTrangThaiBN;
-		
-		private EntitySet<tbBenhNhan> _tbBenhNhans;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnmaTrangThaiBNChanging(string value);
-    partial void OnmaTrangThaiBNChanged();
-    partial void OntenTrangThaiBNChanging(string value);
-    partial void OntenTrangThaiBNChanged();
-    #endregion
-		
-		public tbTrangThaiBN()
-		{
-			this._tbBenhNhans = new EntitySet<tbBenhNhan>(new Action<tbBenhNhan>(this.attach_tbBenhNhans), new Action<tbBenhNhan>(this.detach_tbBenhNhans));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maTrangThaiBN", DbType="Char(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string maTrangThaiBN
-		{
-			get
-			{
-				return this._maTrangThaiBN;
-			}
-			set
-			{
-				if ((this._maTrangThaiBN != value))
-				{
-					this.OnmaTrangThaiBNChanging(value);
-					this.SendPropertyChanging();
-					this._maTrangThaiBN = value;
-					this.SendPropertyChanged("maTrangThaiBN");
-					this.OnmaTrangThaiBNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenTrangThaiBN", DbType="NVarChar(100)")]
-		public string tenTrangThaiBN
-		{
-			get
-			{
-				return this._tenTrangThaiBN;
-			}
-			set
-			{
-				if ((this._tenTrangThaiBN != value))
-				{
-					this.OntenTrangThaiBNChanging(value);
-					this.SendPropertyChanging();
-					this._tenTrangThaiBN = value;
-					this.SendPropertyChanged("tenTrangThaiBN");
-					this.OntenTrangThaiBNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTrangThaiBN_tbBenhNhan", Storage="_tbBenhNhans", ThisKey="maTrangThaiBN", OtherKey="maTrangThaiBN")]
-		public EntitySet<tbBenhNhan> tbBenhNhans
-		{
-			get
-			{
-				return this._tbBenhNhans;
-			}
-			set
-			{
-				this._tbBenhNhans.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tbBenhNhans(tbBenhNhan entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbTrangThaiBN = this;
-		}
-		
-		private void detach_tbBenhNhans(tbBenhNhan entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbTrangThaiBN = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbTrangThaiNV")]
-	public partial class tbTrangThaiNV : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _maTrangThaiNV;
-		
-		private string _tenTrangThaiNV;
-		
-		private EntitySet<tbNhanVien> _tbNhanViens;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnmaTrangThaiNVChanging(string value);
-    partial void OnmaTrangThaiNVChanged();
-    partial void OntenTrangThaiNVChanging(string value);
-    partial void OntenTrangThaiNVChanged();
-    #endregion
-		
-		public tbTrangThaiNV()
-		{
-			this._tbNhanViens = new EntitySet<tbNhanVien>(new Action<tbNhanVien>(this.attach_tbNhanViens), new Action<tbNhanVien>(this.detach_tbNhanViens));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maTrangThaiNV", DbType="Char(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string maTrangThaiNV
-		{
-			get
-			{
-				return this._maTrangThaiNV;
-			}
-			set
-			{
-				if ((this._maTrangThaiNV != value))
-				{
-					this.OnmaTrangThaiNVChanging(value);
-					this.SendPropertyChanging();
-					this._maTrangThaiNV = value;
-					this.SendPropertyChanged("maTrangThaiNV");
-					this.OnmaTrangThaiNVChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenTrangThaiNV", DbType="NVarChar(100)")]
-		public string tenTrangThaiNV
-		{
-			get
-			{
-				return this._tenTrangThaiNV;
-			}
-			set
-			{
-				if ((this._tenTrangThaiNV != value))
-				{
-					this.OntenTrangThaiNVChanging(value);
-					this.SendPropertyChanging();
-					this._tenTrangThaiNV = value;
-					this.SendPropertyChanged("tenTrangThaiNV");
-					this.OntenTrangThaiNVChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbTrangThaiNV_tbNhanVien", Storage="_tbNhanViens", ThisKey="maTrangThaiNV", OtherKey="maTrangThaiNV")]
-		public EntitySet<tbNhanVien> tbNhanViens
-		{
-			get
-			{
-				return this._tbNhanViens;
-			}
-			set
-			{
-				this._tbNhanViens.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tbNhanViens(tbNhanVien entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbTrangThaiNV = this;
-		}
-		
-		private void detach_tbNhanViens(tbNhanVien entity)
-		{
-			this.SendPropertyChanging();
-			entity.tbTrangThaiNV = null;
 		}
 	}
 }

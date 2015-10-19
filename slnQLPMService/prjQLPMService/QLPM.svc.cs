@@ -157,6 +157,21 @@ namespace prjQLPMService
                 });
         }
 
+        private IEnumerable<BenhNhan> SO_Get_dsBenhNhan()
+        {
+            return db.tbBenhNhans.Select(bn => new BenhNhan
+            {
+                MaBN = bn.maBN,
+                HoVaTenDemBN = bn.hoVaTenDemBN,
+                TenBN = bn.tenBN,
+                NgaySinhBN = bn.ngaySinhBN ?? DateTime.Now,
+                GioiTinhBN = bn.gioiTinhBN ?? true,
+                SDTBN = bn.sDTBN,
+                DiaChiBN = bn.diaChiBN,
+                TrangThaiBN = bn.trangThaiBN
+            });
+        }
+
 
         #endregion
 
@@ -439,9 +454,13 @@ namespace prjQLPMService
             _callbackClient.Get_dsDichVu_By_ChucNang_Callback(_dsDichVu);
         }
 
+        public void Get_dsBenhNhan()
+        {
+            _callbackClient = OperationContext.Current.GetCallbackChannel<IQLPMCallback>();
+            _callbackClient.Get_dsBenhNhan_Callback(SO_Get_dsBenhNhan());
+        }
+
         #endregion
-
-
 
 
     }

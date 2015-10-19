@@ -9,20 +9,19 @@
       <Column Name="gioiTinhBN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="sDTBN" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="diaChiBN" Type="System.String" DbType="NVarChar(130)" CanBeNull="true" />
-      <Column Name="maTrangThaiBN" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="trangThaiBN" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Association Name="tbBenhNhan_tbDonThuoc" Member="tbDonThuocs" ThisKey="maBN" OtherKey="maBN" Type="tbDonThuoc" />
       <Association Name="tbBenhNhan_tbHoaDon" Member="tbHoaDons" ThisKey="maBN" OtherKey="maBN" Type="tbHoaDon" />
       <Association Name="tbBenhNhan_tbPhieuCDDV" Member="tbPhieuCDDVs" ThisKey="maBN" OtherKey="maBN" Type="tbPhieuCDDV" />
       <Association Name="tbBenhNhan_tbPhieuCDHA" Member="tbPhieuCDHAs" ThisKey="maBN" OtherKey="maBN" Type="tbPhieuCDHA" />
       <Association Name="tbBenhNhan_tbPhieuXN" Member="tbPhieuXNs" ThisKey="maBN" OtherKey="maBN" Type="tbPhieuXN" />
-      <Association Name="tbTrangThaiBN_tbBenhNhan" Member="tbTrangThaiBN" ThisKey="maTrangThaiBN" OtherKey="maTrangThaiBN" Type="tbTrangThaiBN" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbTrangThaiThuoc" Member="tbTrangThaiThuocs">
-    <Type Name="tbTrangThaiThuoc">
-      <Column Name="maTrangThaiThuoc" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="tenTrangThaiThuoc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="tbTrangThaiThuoc_tbThuoc" Member="tbThuocs" ThisKey="maTrangThaiThuoc" OtherKey="maTrangThaiThuoc" Type="tbThuoc" />
+  <Table Name="dbo.tbTrangThaiNV" Member="tbTrangThaiNVs">
+    <Type Name="tbTrangThaiNV">
+      <Column Name="maTrangThaiNV" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenTrangThaiNV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="tbTrangThaiNV_tbNhanVien" Member="tbNhanViens" ThisKey="maTrangThaiNV" OtherKey="maTrangThaiNV" Type="tbNhanVien" />
     </Type>
   </Table>
   <Table Name="dbo.tbChiTietDonThuoc" Member="tbChiTietDonThuocs">
@@ -179,23 +178,8 @@
       <Column Name="soLuongCon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="donGia" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="hanSuDung" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="maTrangThaiThuoc" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="trangThaiThuoc" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Association Name="tbThuoc_tbChiTietDonThuoc" Member="tbChiTietDonThuocs" ThisKey="maThuoc" OtherKey="maThuoc" Type="tbChiTietDonThuoc" />
-      <Association Name="tbTrangThaiThuoc_tbThuoc" Member="tbTrangThaiThuoc" ThisKey="maTrangThaiThuoc" OtherKey="maTrangThaiThuoc" Type="tbTrangThaiThuoc" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbTrangThaiBN" Member="tbTrangThaiBNs">
-    <Type Name="tbTrangThaiBN">
-      <Column Name="maTrangThaiBN" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="tenTrangThaiBN" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="tbTrangThaiBN_tbBenhNhan" Member="tbBenhNhans" ThisKey="maTrangThaiBN" OtherKey="maTrangThaiBN" Type="tbBenhNhan" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbTrangThaiNV" Member="tbTrangThaiNVs">
-    <Type Name="tbTrangThaiNV">
-      <Column Name="maTrangThaiNV" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="tenTrangThaiNV" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="tbTrangThaiNV_tbNhanVien" Member="tbNhanViens" ThisKey="maTrangThaiNV" OtherKey="maTrangThaiNV" Type="tbNhanVien" />
     </Type>
   </Table>
 </Database>

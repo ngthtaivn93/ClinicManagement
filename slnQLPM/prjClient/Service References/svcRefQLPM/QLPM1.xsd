@@ -72,6 +72,11 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="Get_dsBenhNhan">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DangNhap_Callback">
     <xs:complexType>
       <xs:sequence>
@@ -140,6 +145,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsDichVu_By_ChucNang" nillable="true" type="q13:ArrayOfDichVu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsBenhNhan_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsBenhNhan" nillable="true" type="q14:ArrayOfBenhNhan" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -31,6 +31,7 @@ namespace prjClient
         public delegate void frmQLNhanVien_dsNhanVien_By_taikhoanNV(svcRefQLPM.NhanVien[] dsNhanVien_By_taikhoanNV);
         public delegate void frmQLNHanVien_AddResponse(string taikhoanNV);
         public delegate void frmTiepNhan_dsDichVu_By_ChucNang(svcRefQLPM.DichVu[] dsDichVu);
+        public delegate void frmTiepNhan_dsBenhNhan(svcRefQLPM.BenhNhan[] dsBenhNhan);
 
         public frmMain()
         {
@@ -134,6 +135,16 @@ namespace prjClient
                 frmTiepNhan frmChild = (frmTiepNhan)this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmTiepNhan"));
                 frmTiepNhan_dsDichVu_By_ChucNang gui_frmTiepNhan_dsDichVu = new frmTiepNhan_dsDichVu_By_ChucNang(frmChild.Nhan_frmTiepNhan_dsDichVu_By_ChucNang);
                 gui_frmTiepNhan_dsDichVu(dsDichVu);
+            }
+        }
+
+        public void Gui_frmTiepNhan_dsBenhNhan(svcRefQLPM.BenhNhan[] dsBenhNhan)
+        {
+            if (this.MdiChildren.Contains(this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmTiepNhan"))))
+            {
+                frmTiepNhan frmChild = (frmTiepNhan)this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmTiepNhan"));
+                frmTiepNhan_dsBenhNhan gui_frmTiepNhan_dsBenhNhan = new frmTiepNhan_dsBenhNhan(frmChild.Nhan_frmTiepNhan_dsBenhNhan);
+                gui_frmTiepNhan_dsBenhNhan(dsBenhNhan);
             }
         }
 
@@ -337,6 +348,8 @@ namespace prjClient
 
         private void rbtnThoat_Click(object sender, EventArgs e)
         {
+            //if (_nhanVien_HienTai.Equals(null))
+                _proxy.DangXuat(_nhanVien_HienTai.TaiKhoanNV);
             Application.Exit();
         }
         #endregion
@@ -596,13 +609,17 @@ namespace prjClient
             Gui_frmTiepNhan_dsDichVu_By_ChucNang(dsDichVu_By_ChucNang);
         }
 
+        public void Get_dsBenhNhan_Callback(svcRefQLPM.BenhNhan[] dsBenhNhan)
+        {
+            Gui_frmTiepNhan_dsBenhNhan(dsBenhNhan);
+        }
+
         #endregion
 
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (_nhanVien_HienTai.Equals(null))
-                _proxy.DangXuat(_nhanVien_HienTai.TaiKhoanNV);
-        }
+
+
+
+
 
 
 

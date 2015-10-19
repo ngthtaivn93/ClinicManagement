@@ -69,4 +69,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DichVu" nillable="true" type="tns:DichVu" />
+  <xs:complexType name="ArrayOfBenhNhan">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BenhNhan" nillable="true" type="tns:BenhNhan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBenhNhan" nillable="true" type="tns:ArrayOfBenhNhan" />
+  <xs:complexType name="BenhNhan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaBN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HoVaTenDemBN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenBN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NgaySinhBN" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GioiTinhBN" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SDTBN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DiaChiBN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrangThaiBN" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BenhNhan" nillable="true" type="tns:BenhNhan" />
 </xs:schema>

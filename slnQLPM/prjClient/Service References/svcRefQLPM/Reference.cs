@@ -478,6 +478,163 @@ namespace prjClient.svcRefQLPM {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BenhNhan", Namespace="http://schemas.datacontract.org/2004/07/prjQLPMService")]
+    [System.SerializableAttribute()]
+    public partial class BenhNhan : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MaBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HoVaTenDemBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime NgaySinhBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool GioiTinhBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SDTBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DiaChiBNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TrangThaiBNField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MaBN {
+            get {
+                return this.MaBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MaBNField, value) != true)) {
+                    this.MaBNField = value;
+                    this.RaisePropertyChanged("MaBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public string HoVaTenDemBN {
+            get {
+                return this.HoVaTenDemBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HoVaTenDemBNField, value) != true)) {
+                    this.HoVaTenDemBNField = value;
+                    this.RaisePropertyChanged("HoVaTenDemBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public string TenBN {
+            get {
+                return this.TenBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenBNField, value) != true)) {
+                    this.TenBNField = value;
+                    this.RaisePropertyChanged("TenBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.DateTime NgaySinhBN {
+            get {
+                return this.NgaySinhBNField;
+            }
+            set {
+                if ((this.NgaySinhBNField.Equals(value) != true)) {
+                    this.NgaySinhBNField = value;
+                    this.RaisePropertyChanged("NgaySinhBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public bool GioiTinhBN {
+            get {
+                return this.GioiTinhBNField;
+            }
+            set {
+                if ((this.GioiTinhBNField.Equals(value) != true)) {
+                    this.GioiTinhBNField = value;
+                    this.RaisePropertyChanged("GioiTinhBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public string SDTBN {
+            get {
+                return this.SDTBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SDTBNField, value) != true)) {
+                    this.SDTBNField = value;
+                    this.RaisePropertyChanged("SDTBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public string DiaChiBN {
+            get {
+                return this.DiaChiBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DiaChiBNField, value) != true)) {
+                    this.DiaChiBNField = value;
+                    this.RaisePropertyChanged("DiaChiBN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+        public string TrangThaiBN {
+            get {
+                return this.TrangThaiBNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TrangThaiBNField, value) != true)) {
+                    this.TrangThaiBNField = value;
+                    this.RaisePropertyChanged("TrangThaiBN");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="svcRefQLPM.IQLPM", CallbackContract=typeof(prjClient.svcRefQLPM.IQLPMCallback))]
     public interface IQLPM {
@@ -547,6 +704,12 @@ namespace prjClient.svcRefQLPM {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsDichVu")]
         System.Threading.Tasks.Task Get_dsDichVuAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsBenhNhan")]
+        void Get_dsBenhNhan();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsBenhNhan")]
+        System.Threading.Tasks.Task Get_dsBenhNhanAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -581,6 +744,9 @@ namespace prjClient.svcRefQLPM {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsDichVu_By_ChucNang_Callback")]
         void Get_dsDichVu_By_ChucNang_Callback(prjClient.svcRefQLPM.DichVu[] dsDichVu_By_ChucNang);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsBenhNhan_Callback")]
+        void Get_dsBenhNhan_Callback(prjClient.svcRefQLPM.BenhNhan[] dsBenhNhan);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -697,6 +863,14 @@ namespace prjClient.svcRefQLPM {
         
         public System.Threading.Tasks.Task Get_dsDichVuAsync() {
             return base.Channel.Get_dsDichVuAsync();
+        }
+        
+        public void Get_dsBenhNhan() {
+            base.Channel.Get_dsBenhNhan();
+        }
+        
+        public System.Threading.Tasks.Task Get_dsBenhNhanAsync() {
+            return base.Channel.Get_dsBenhNhanAsync();
         }
     }
 }

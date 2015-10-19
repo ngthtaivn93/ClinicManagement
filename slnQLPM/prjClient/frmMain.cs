@@ -30,6 +30,7 @@ namespace prjClient
         public delegate void frmQLNhanVien_dsChucNang_By_taikhoanNV(svcRefQLPM.ChucNang[] dSChucNang_By_taikhoanNV);
         public delegate void frmQLNhanVien_dsNhanVien_By_taikhoanNV(svcRefQLPM.NhanVien[] dsNhanVien_By_taikhoanNV);
         public delegate void frmQLNHanVien_AddResponse(string taikhoanNV);
+        public delegate void frmTiepNhan_dsDichVu_By_ChucNang(svcRefQLPM.DichVu[] dsDichVu);
 
         public frmMain()
         {
@@ -105,7 +106,6 @@ namespace prjClient
             }
         }
 
-
         public void Gui_frmQLNhanVien_dsNhanVien_By_taikhoanNV(svcRefQLPM.NhanVien[] dsNhanVien_By_taikhoanNV)
         {
             if (this.MdiChildren.Contains(this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"))))
@@ -123,6 +123,17 @@ namespace prjClient
                 frmQLNhanVien frmChild = (frmQLNhanVien)this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmQLNhanVien"));
                 frmQLNHanVien_AddResponse gui_frmQLNHanVien_AddResponse = new frmQLNHanVien_AddResponse(frmChild.Nhan_frmQLNhanVien_AddResponse);
                 gui_frmQLNHanVien_AddResponse(taikhoanNV);
+            }
+        }
+
+        // From tiep nhan
+        public void Gui_frmTiepNhan_dsDichVu_By_ChucNang(svcRefQLPM.DichVu[] dsDichVu)
+        {
+            if (this.MdiChildren.Contains(this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmTiepNhan"))))
+            {
+                frmTiepNhan frmChild = (frmTiepNhan)this.MdiChildren.FirstOrDefault(f => f.Name.Equals("frmTiepNhan"));
+                frmTiepNhan_dsDichVu_By_ChucNang gui_frmTiepNhan_dsDichVu = new frmTiepNhan_dsDichVu_By_ChucNang(frmChild.Nhan_frmTiepNhan_dsDichVu_By_ChucNang);
+                gui_frmTiepNhan_dsDichVu(dsDichVu);
             }
         }
 
@@ -580,6 +591,11 @@ namespace prjClient
             Gui_frmQLNHanVien_AddResponse(taikhoanNV);
         }
 
+        public void Get_dsDichVu_By_ChucNang_Callback(svcRefQLPM.DichVu[] dsDichVu_By_ChucNang)
+        {
+            Gui_frmTiepNhan_dsDichVu_By_ChucNang(dsDichVu_By_ChucNang);
+        }
+
         #endregion
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -587,6 +603,9 @@ namespace prjClient
             if (_nhanVien_HienTai.Equals(null))
                 _proxy.DangXuat(_nhanVien_HienTai.TaiKhoanNV);
         }
+
+
+
 
 
 

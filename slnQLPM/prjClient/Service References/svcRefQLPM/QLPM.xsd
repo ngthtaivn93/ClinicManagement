@@ -54,4 +54,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TrangThaiNV" nillable="true" type="tns:TrangThaiNV" />
+  <xs:complexType name="ArrayOfDichVu">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DichVu" nillable="true" type="tns:DichVu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDichVu" nillable="true" type="tns:ArrayOfDichVu" />
+  <xs:complexType name="DichVu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaDV" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenDV" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaCN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GiaDV" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DichVu" nillable="true" type="tns:DichVu" />
 </xs:schema>

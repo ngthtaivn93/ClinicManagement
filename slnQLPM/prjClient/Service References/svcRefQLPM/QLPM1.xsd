@@ -67,6 +67,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Get_dsDichVu">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DangNhap_Callback">
     <xs:complexType>
       <xs:sequence>
@@ -128,6 +133,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="taikhoanNV" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Get_dsDichVu_By_ChucNang_Callback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/prjQLPMService" minOccurs="0" name="dsDichVu_By_ChucNang" nillable="true" type="q13:ArrayOfDichVu" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

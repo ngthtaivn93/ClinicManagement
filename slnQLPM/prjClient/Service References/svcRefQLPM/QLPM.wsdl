@@ -333,6 +333,29 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IQLPM_Get_dsDichVu_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSDualHttpBinding_IQLPM_DangNhap_Callback_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -540,6 +563,29 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IQLPM_Get_dsDichVu_By_ChucNang_Callback_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="Sequence" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="AckRequested" Namespace="http://schemas.xmlsoap.org/ws/2005/02/rm" />
+          <sp:Header Name="ChannelInstance" Namespace="http://schemas.microsoft.com/ws/2005/02/duplex" />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/QLPM2/QLPM.svc?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -578,6 +624,9 @@
   <wsdl:message name="IQLPM_Mod_NhanVien_InputMessage">
     <wsdl:part name="parameters" element="tns:Mod_NhanVien" />
   </wsdl:message>
+  <wsdl:message name="IQLPM_Get_dsDichVu_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get_dsDichVu" />
+  </wsdl:message>
   <wsdl:message name="IQLPM_DangNhap_Callback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DangNhap_Callback" />
   </wsdl:message>
@@ -604,6 +653,9 @@
   </wsdl:message>
   <wsdl:message name="IQLPM_Add_NhanVien_Callback_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:Add_NhanVien_Callback" />
+  </wsdl:message>
+  <wsdl:message name="IQLPM_Get_dsDichVu_By_ChucNang_Callback_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Get_dsDichVu_By_ChucNang_Callback" />
   </wsdl:message>
   <wsdl:portType name="IQLPM">
     <wsdl:operation name="DangNhap">
@@ -636,6 +688,9 @@
     <wsdl:operation name="Mod_NhanVien">
       <wsdl:input wsaw:Action="http://tempuri.org/IQLPM/Mod_NhanVien" message="tns:IQLPM_Mod_NhanVien_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Get_dsDichVu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQLPM/Get_dsDichVu" message="tns:IQLPM_Get_dsDichVu_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DangNhap_Callback">
       <wsdl:output wsaw:Action="http://tempuri.org/IQLPM/DangNhap_Callback" message="tns:IQLPM_DangNhap_Callback_OutputCallbackMessage" />
     </wsdl:operation>
@@ -662,6 +717,9 @@
     </wsdl:operation>
     <wsdl:operation name="Add_NhanVien_Callback">
       <wsdl:output wsaw:Action="http://tempuri.org/IQLPM/Add_NhanVien_Callback" message="tns:IQLPM_Add_NhanVien_Callback_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_dsDichVu_By_ChucNang_Callback">
+      <wsdl:output wsaw:Action="http://tempuri.org/IQLPM/Get_dsDichVu_By_ChucNang_Callback" message="tns:IQLPM_Get_dsDichVu_By_ChucNang_Callback_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSDualHttpBinding_IQLPM" type="tns:IQLPM">
@@ -737,6 +795,13 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="Get_dsDichVu">
+      <soap12:operation soapAction="http://tempuri.org/IQLPM/Get_dsDichVu" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IQLPM_Get_dsDichVu_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="DangNhap_Callback">
       <soap12:operation soapAction="http://tempuri.org/IQLPM/DangNhap_Callback" style="document" />
       <wsdl:output>
@@ -797,6 +862,13 @@
       <soap12:operation soapAction="http://tempuri.org/IQLPM/Add_NhanVien_Callback" style="document" />
       <wsdl:output>
         <wsp:PolicyReference URI="#WSDualHttpBinding_IQLPM_Add_NhanVien_Callback_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_dsDichVu_By_ChucNang_Callback">
+      <soap12:operation soapAction="http://tempuri.org/IQLPM/Get_dsDichVu_By_ChucNang_Callback" style="document" />
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IQLPM_Get_dsDichVu_By_ChucNang_Callback_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

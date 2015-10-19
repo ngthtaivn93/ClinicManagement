@@ -385,6 +385,99 @@ namespace prjClient.svcRefQLPM {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DichVu", Namespace="http://schemas.datacontract.org/2004/07/prjQLPMService")]
+    [System.SerializableAttribute()]
+    public partial class DichVu : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MaDVField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenDVField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MaCNField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double GiaDVField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MaDV {
+            get {
+                return this.MaDVField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MaDVField, value) != true)) {
+                    this.MaDVField = value;
+                    this.RaisePropertyChanged("MaDV");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenDV {
+            get {
+                return this.TenDVField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenDVField, value) != true)) {
+                    this.TenDVField = value;
+                    this.RaisePropertyChanged("TenDV");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public string MaCN {
+            get {
+                return this.MaCNField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MaCNField, value) != true)) {
+                    this.MaCNField = value;
+                    this.RaisePropertyChanged("MaCN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public double GiaDV {
+            get {
+                return this.GiaDVField;
+            }
+            set {
+                if ((this.GiaDVField.Equals(value) != true)) {
+                    this.GiaDVField = value;
+                    this.RaisePropertyChanged("GiaDV");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="svcRefQLPM.IQLPM", CallbackContract=typeof(prjClient.svcRefQLPM.IQLPMCallback))]
     public interface IQLPM {
@@ -448,6 +541,12 @@ namespace prjClient.svcRefQLPM {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Mod_NhanVien")]
         System.Threading.Tasks.Task Mod_NhanVienAsync(prjClient.svcRefQLPM.NhanVien modNhanVien, string[] dsChucNang_modNhanVien);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsDichVu")]
+        void Get_dsDichVu();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsDichVu")]
+        System.Threading.Tasks.Task Get_dsDichVuAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -479,6 +578,9 @@ namespace prjClient.svcRefQLPM {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Add_NhanVien_Callback")]
         void Add_NhanVien_Callback(string taikhoanNV);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IQLPM/Get_dsDichVu_By_ChucNang_Callback")]
+        void Get_dsDichVu_By_ChucNang_Callback(prjClient.svcRefQLPM.DichVu[] dsDichVu_By_ChucNang);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -587,6 +689,14 @@ namespace prjClient.svcRefQLPM {
         
         public System.Threading.Tasks.Task Mod_NhanVienAsync(prjClient.svcRefQLPM.NhanVien modNhanVien, string[] dsChucNang_modNhanVien) {
             return base.Channel.Mod_NhanVienAsync(modNhanVien, dsChucNang_modNhanVien);
+        }
+        
+        public void Get_dsDichVu() {
+            base.Channel.Get_dsDichVu();
+        }
+        
+        public System.Threading.Tasks.Task Get_dsDichVuAsync() {
+            return base.Channel.Get_dsDichVuAsync();
         }
     }
 }

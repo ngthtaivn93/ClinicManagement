@@ -43,6 +43,9 @@ namespace prjQLPMService
         [OperationContract(IsOneWay = true)]
         void Mod_NhanVien(NhanVien modNhanVien, List<string> dsChucNang_modNhanVien);
 
+        [OperationContract(IsOneWay = true)]
+        void Get_dsDichVu();
+
     }
 
     public interface IQLPMCallback
@@ -74,6 +77,8 @@ namespace prjQLPMService
         [OperationContract(IsOneWay = true)]
         void Add_NhanVien_Callback(string taikhoanNV);
 
+        [OperationContract(IsOneWay = true)]
+        void Get_dsDichVu_By_ChucNang_Callback(IEnumerable<DichVu> dsDichVu_By_ChucNang);
     }
 
     [DataContract]

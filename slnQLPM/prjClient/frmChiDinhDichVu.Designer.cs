@@ -32,16 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.chkKham = new System.Windows.Forms.CheckedListBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.chkXetNghiem = new System.Windows.Forms.CheckedListBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.chkCDHA = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnXacNhan = new System.Windows.Forms.Button();
-            this.btnHuy = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaBN = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,12 +43,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtGioiTinhBN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXacNhan = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
+            this.chkDSDV = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -93,82 +85,18 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.Controls.Add(this.groupBox4, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.groupBox5, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.groupBox6, 2, 0);
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.chkDSDV, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 354F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 354F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(930, 354);
             this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.chkKham);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(304, 348);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Khám";
-            // 
-            // chkKham
-            // 
-            this.chkKham.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkKham.FormattingEnabled = true;
-            this.chkKham.Location = new System.Drawing.Point(3, 16);
-            this.chkKham.Name = "chkKham";
-            this.chkKham.Size = new System.Drawing.Size(298, 329);
-            this.chkKham.TabIndex = 0;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.chkXetNghiem);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(313, 3);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(304, 348);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Xét nghiệm";
-            // 
-            // chkXetNghiem
-            // 
-            this.chkXetNghiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkXetNghiem.FormattingEnabled = true;
-            this.chkXetNghiem.Location = new System.Drawing.Point(3, 16);
-            this.chkXetNghiem.Name = "chkXetNghiem";
-            this.chkXetNghiem.Size = new System.Drawing.Size(298, 329);
-            this.chkXetNghiem.TabIndex = 0;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.chkCDHA);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(623, 3);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(304, 348);
-            this.groupBox6.TabIndex = 2;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Chuẩn đoán hình ảnh";
-            // 
-            // chkCDHA
-            // 
-            this.chkCDHA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkCDHA.FormattingEnabled = true;
-            this.chkCDHA.Location = new System.Drawing.Point(3, 16);
-            this.chkCDHA.Name = "chkCDHA";
-            this.chkCDHA.Size = new System.Drawing.Size(298, 329);
-            this.chkCDHA.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -189,43 +117,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin bệnh nhân";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnXacNhan);
-            this.panel1.Controls.Add(this.btnHuy);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 442);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(936, 34);
-            this.panel1.TabIndex = 1;
-            // 
-            // btnXacNhan
-            // 
-            this.btnXacNhan.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnXacNhan.Image = ((System.Drawing.Image)(resources.GetObject("btnXacNhan.Image")));
-            this.btnXacNhan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXacNhan.Location = new System.Drawing.Point(807, 0);
-            this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(78, 34);
-            this.btnXacNhan.TabIndex = 0;
-            this.btnXacNhan.Text = "Xác nhận";
-            this.btnXacNhan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXacNhan.UseVisualStyleBackColor = true;
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
-            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHuy.Location = new System.Drawing.Point(885, 0);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(51, 34);
-            this.btnHuy.TabIndex = 1;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnHuy.UseVisualStyleBackColor = true;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // label1
             // 
@@ -312,6 +203,52 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Giới tính:";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnXacNhan);
+            this.panel1.Controls.Add(this.btnHuy);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 442);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(936, 34);
+            this.panel1.TabIndex = 1;
+            // 
+            // btnXacNhan
+            // 
+            this.btnXacNhan.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnXacNhan.Image = ((System.Drawing.Image)(resources.GetObject("btnXacNhan.Image")));
+            this.btnXacNhan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXacNhan.Location = new System.Drawing.Point(807, 0);
+            this.btnXacNhan.Name = "btnXacNhan";
+            this.btnXacNhan.Size = new System.Drawing.Size(78, 34);
+            this.btnXacNhan.TabIndex = 0;
+            this.btnXacNhan.Text = "Xác nhận";
+            this.btnXacNhan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXacNhan.UseVisualStyleBackColor = true;
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHuy.Location = new System.Drawing.Point(885, 0);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(51, 34);
+            this.btnHuy.TabIndex = 1;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
+            // chkDSDV
+            // 
+            this.chkDSDV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkDSDV.FormattingEnabled = true;
+            this.chkDSDV.Location = new System.Drawing.Point(3, 3);
+            this.chkDSDV.Name = "chkDSDV";
+            this.chkDSDV.Size = new System.Drawing.Size(924, 348);
+            this.chkDSDV.TabIndex = 1;
+            // 
             // frmChiDinhDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,9 +262,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -340,12 +274,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckedListBox chkKham;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckedListBox chkXetNghiem;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.CheckedListBox chkCDHA;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnXacNhan;
@@ -360,5 +288,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtGioiTinhBN;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckedListBox chkDSDV;
     }
 }

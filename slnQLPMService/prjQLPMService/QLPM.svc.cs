@@ -13,6 +13,8 @@ namespace prjQLPMService
     public class QLPM : IQLPM
     {
         private static Dictionary<string, IQLPMCallback> _dsClient = new Dictionary<string, IQLPMCallback>();
+        private static List<DichVu> _dsDichVu = new List<DichVu>();
+        private static List<ChucNang> _dSChucNang = new List<ChucNang>();
         private IQLPMCallback _callbackClient;
         dbQLPMDataContext db = new dbQLPMDataContext();
         #region Các hàm thao tác với _dsClient
@@ -144,6 +146,18 @@ namespace prjQLPMService
             return dsTaiKhoanNVActive;
         }
 
+        private IEnumerable<DichVu> SO_Get_dsDichVu()
+        {
+            return db.tbDichVus.Select(dv => new DichVu
+                {
+                    MaDV = dv.maCN,
+                    TenDV = dv.tenDV,
+                    MaCN = dv.maCN,
+                    GiaDV = dv.giaDV ?? 0
+                });
+        }
+
+
         #endregion
 
         #region Các dịch vụ cung cấp cho Client
@@ -161,12 +175,47 @@ namespace prjQLPMService
                     SO_ThayDoiTrangThai_NhanVien(taikhoanNV, "01");
                     _callbackClient.DangNhap_Callback(true, null, SO_Get_NhanVien(taikhoanNV), SO_Get_dsChucNang_By_taikhoanNV(taikhoanNV));
 
+                    // Cap nhat lai danh sach nhan vien cho nhung client co chuc nang quan tri he thong
                     foreach (var active in SO_Get_dsTaiKhoanActive_By_ChucNang("CN010"))
                         foreach (var item in _dsClient)
                             if (item.Key.Equals(active))
-                            {
                                 item.Value.Get_dsNhanVien_Callback(SO_Get_dsNhanVien());
-                            }
+
+                    // Cap nhat lai danh sach dich vu cho nhung client co chuc kham benh va tiep nhan 00, 03, 04, 05, 06, 07
+
+                    // Lay danh sach dich vu cua chuc nang
+                    _dSChucNang.Clear();
+                    _dsDichVu.Clear();
+                    foreach (string tkNV in _dsClient.Keys)
+                        foreach (ChucNang cn in SO_Get_dsChucNang_By_taikhoanNV(tkNV))
+                            //if (!tmpDSChucNang.Contains(cn))
+                            //    tmpDSChucNang.Add(cn);
+                            if ((_dSChucNang.Where(cnang => cnang.MaCN == cn.MaCN).Select(cnang => cnang).Count()) == 0)
+                                _dSChucNang.Add(cn);
+                    foreach (ChucNang cn in _dSChucNang)
+                    {
+                        IEnumerable<DichVu> tmpDSDichVu = db.tbDichVus.Where(dv => dv.maCN == cn.MaCN).Select(dv => new DichVu
+                        {
+                            MaDV = dv.maDV,
+                            TenDV = dv.tenDV,
+                            MaCN = dv.maCN,
+                            GiaDV = dv.giaDV ?? 0
+                        });
+                        foreach (DichVu dv in tmpDSDichVu)
+                            if ((_dsDichVu.Where(dvu => dvu.MaDV == dv.MaDV).Select(dvu => dvu).Count()) == 0)
+                                _dsDichVu.Add(dv);
+                        //if (!_dsDichVu.Contains(dv))
+                        //    _dsDichVu.Add(dv);
+                    }
+
+                    // Gui danh sach dv
+                    string[] tmpDSClientDV = new string[] { "CN000", "CN003", "CN004", "CN005", "CN006", "CN007" };
+
+                    foreach (string cn in tmpDSClientDV)
+                        foreach (var active in SO_Get_dsTaiKhoanActive_By_ChucNang(cn))
+                            foreach (var item in _dsClient)
+                                if (item.Key.Equals(active))
+                                    item.Value.Get_dsDichVu_By_ChucNang_Callback(_dsDichVu);
                 }
                 else
                     _callbackClient.DangNhap_Callback(false, "Tài khoản này đã đăng nhập vào hệ thống", null, null);
@@ -190,6 +239,39 @@ namespace prjQLPMService
                 foreach (var item in _dsClient)
                     if (item.Key.Equals(active))
                         item.Value.Get_dsNhanVien_Callback(SO_Get_dsNhanVien());
+            // Cap nhat lai danh sach dich vu cho nhung client co chuc kham benh va tiep nhan 00, 03, 04, 05, 06, 07
+
+            // Lay danh sach dich vu cua chuc nang
+            _dSChucNang.Clear();
+            _dsDichVu.Clear();
+            foreach (string tkNV in _dsClient.Keys)
+                foreach (ChucNang cn in SO_Get_dsChucNang_By_taikhoanNV(tkNV))
+                    if ((_dSChucNang.Where(cnang => cnang.MaCN == cn.MaCN).Select(cnang => cnang).Count()) == 0)
+                        _dSChucNang.Add(cn);
+
+            foreach (ChucNang cn in _dSChucNang)
+            {
+                IEnumerable<DichVu> tmpDSDichVu = db.tbDichVus.Where(dv => dv.maCN == cn.MaCN).Select(dv => new DichVu
+                {
+                    MaDV = dv.maDV,
+                    TenDV = dv.tenDV,
+                    MaCN = dv.maCN,
+                    GiaDV = dv.giaDV ?? 0
+                });
+                foreach (DichVu dv in tmpDSDichVu)
+                    if ((_dsDichVu.Where(dvu => dvu.MaDV == dv.MaDV).Select(dvu => dvu).Count()) == 0)
+                        _dsDichVu.Add(dv);
+            }
+
+            // Gui danh sach dv
+            string[] tmpDSClientDV = new string[] { "CN000", "CN003", "CN004", "CN005", "CN006", "CN007" };
+
+            foreach (string cn in tmpDSClientDV)
+                foreach (var active in SO_Get_dsTaiKhoanActive_By_ChucNang(cn))
+                    foreach (var item in _dsClient)
+                        if (item.Key.Equals(active))
+                            item.Value.Get_dsDichVu_By_ChucNang_Callback(_dsDichVu);
+
         }
 
         /// <summary>
@@ -328,7 +410,7 @@ namespace prjQLPMService
                     db.tbNhanVien_ChucNangs.DeleteOnSubmit(item);
                     db.SubmitChanges();
                 }
-            
+
             // Them danh sach chuc nang moi
             foreach (var item in dsChucNang_modNhanVien)
                 if (item != null)
@@ -351,7 +433,16 @@ namespace prjQLPMService
             _callbackClient.Add_NhanVien_Callback(modNhanVien.TaiKhoanNV);
         }
 
+        public void Get_dsDichVu()
+        {
+            _callbackClient = OperationContext.Current.GetCallbackChannel<IQLPMCallback>();
+            _callbackClient.Get_dsDichVu_By_ChucNang_Callback(_dsDichVu);
+        }
+
         #endregion
+
+
+
 
     }
 }
